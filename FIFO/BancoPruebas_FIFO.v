@@ -11,7 +11,8 @@ module BancoPruebas_FIFO; // Testbench
     wire [9:0] data_out_conduct, data_out_estruct;	
     /*AUTOWIRE*/
     // Beginning of automatic wires (for undeclared instantiated-module outputs)
-    wire		almost_empty;		// From conductual of FIFO.v, ...
+    wire		alm_empty;		// From conductual of FIFO.v, ...
+    wire		alm_full;		// From estructural of FIFO_estruct.v
     wire		clk;			// From prob of Probador_FIFO.v
     wire [9:0]		data_in;		// From prob of Probador_FIFO.v
     wire		pop;			// From prob of Probador_FIFO.v
@@ -26,18 +27,18 @@ module BancoPruebas_FIFO; // Testbench
     FIFO conductual (
             .data_out(data_out_conduct),
             .empty(empty_conduct),
-            .almost_full(almost_full_conduct),
+            .alm_full(almost_full_conduct),
         /*AUTOINST*/
 		     // Outputs
-		     .almost_empty	(almost_empty),
+		     .alm_empty		(alm_empty),
 		     // Inputs
 		     .clk		(clk),
-		     .state		(state[3:0]),
 		     .push		(push),
 		     .pop		(pop),
-		     .data_in		(data_in[9:0]),
-		     .umbral_superior	(umbral_superior[2:0]),
-		     .umbral_inferior	(umbral_inferior[2:0]));
+		     .um_sup		(umbral_superior[2:0]),
+		     .um_inf		(umbral_inferior[2:0]),
+		     .state		(state[3:0]),
+		     .data_in		(data_in[9:0]));
 
 	Probador_FIFO prob (
             .data_out_conduct(data_out_conduct),
@@ -59,18 +60,18 @@ module BancoPruebas_FIFO; // Testbench
     FIFO_estruct estructural (
             .data_out(data_out_estruct),
             .empty(empty_estruct),
-            .almost_full(almost_full_estruct),
+            .alm_full(almost_full_estruct),
         /*AUTOINST*/
 			      // Outputs
-			      .almost_empty	(almost_empty),
+			      .alm_empty	(alm_empty),
 			      // Inputs
 			      .clk		(clk),
 			      .data_in		(data_in[9:0]),
 			      .pop		(pop),
 			      .push		(push),
 			      .state		(state[3:0]),
-			      .umbral_inferior	(umbral_inferior[2:0]),
-			      .umbral_superior	(umbral_superior[2:0]));
+			      .um_inf		(umbral_inferior[2:0]),
+			      .um_sup		(umbral_superior[2:0]));
     
 endmodule
 // Local Variable:

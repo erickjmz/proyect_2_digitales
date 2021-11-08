@@ -1,5 +1,5 @@
 $date
-	Sun Nov  7 12:02:45 2021
+	Sun Nov  7 21:57:42 2021
 $end
 $version
 	Icarus Verilog
@@ -12,7 +12,7 @@ $var wire 1 ! A $end
 $var wire 1 " Y $end
 $upscope $end
 $scope module BancoPruebas_FIFO $end
-$var wire 1 # almost_empty $end
+$var wire 1 # alm_empty $end
 $var wire 3 $ umbral_superior [2:0] $end
 $var wire 3 % umbral_inferior [2:0] $end
 $var wire 4 & state [3:0] $end
@@ -27,16 +27,16 @@ $var wire 1 . clk $end
 $var wire 1 / almost_full_estruct $end
 $var wire 1 0 almost_full_conduct $end
 $scope module conductual $end
-$var wire 3 1 umbral_superior [2:0] $end
-$var wire 3 2 umbral_inferior [2:0] $end
+$var wire 3 1 um_sup [2:0] $end
+$var wire 3 2 um_inf [2:0] $end
 $var wire 4 3 state [3:0] $end
 $var wire 1 ' push $end
 $var wire 1 ( pop $end
 $var wire 10 4 data_out [9:0] $end
 $var wire 10 5 data_in [9:0] $end
 $var wire 1 . clk $end
-$var reg 1 6 almost_empty $end
-$var reg 1 0 almost_full $end
+$var reg 1 6 alm_empty $end
+$var reg 1 0 alm_full $end
 $var reg 4 7 contador [3:0] $end
 $var reg 1 * empty $end
 $var reg 1 8 full $end
@@ -58,11 +58,11 @@ $var reg 10 C q_a [9:0] $end
 $upscope $end
 $upscope $end
 $scope module estructural $end
-$var wire 1 # almost_empty $end
+$var wire 1 # alm_empty $end
 $var wire 3 D wr_ptr [2:0] $end
 $var wire 1 E we_a $end
-$var wire 3 F umbral_superior [2:0] $end
-$var wire 3 G umbral_inferior [2:0] $end
+$var wire 3 F um_sup [2:0] $end
+$var wire 3 G um_inf [2:0] $end
 $var wire 4 H state [3:0] $end
 $var wire 1 I re_a $end
 $var wire 3 J rd_ptr [2:0] $end
@@ -75,7 +75,7 @@ $var wire 10 M data_out [9:0] $end
 $var wire 10 N data_in [9:0] $end
 $var wire 4 O contador [3:0] $end
 $var wire 1 . clk $end
-$var wire 1 / almost_full $end
+$var wire 1 / alm_full $end
 $var wire 1 P _144_ $end
 $var wire 1 Q _143_ $end
 $var wire 1 R _142_ $end

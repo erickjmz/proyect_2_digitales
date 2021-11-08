@@ -6,8 +6,8 @@ module Probador_FIFO(
     output reg push,
     output reg pop,
     output reg [9:0] data_in,
-    output reg [2:0] umbral_superior,            // Umbral de almost full
-    output reg [2:0] umbral_inferior,            // Umbral de almost empty
+    output reg [2:0] umbral_superior,            
+    output reg [2:0] umbral_inferior,            
     input [9:0] data_out_conduct,
     input [9:0] data_out_estruct,
     input almost_full_conduct,
