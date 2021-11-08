@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Nov  8 16:04:50 2021
+[*]
+[dumpfile] "/home/gabo4xz/PRUEBAS/Memoria_RAM/Memoria_RAM.vcd"
+[dumpfile_mtime] "Mon Nov  8 16:02:26 2021"
+[dumpfile_size] 111822
+[savefile] "/home/gabo4xz/PRUEBAS/Memoria_RAM/Memoria_RAM.gtkw"
+[timestart] 0
+[size] 1288 599
+[pos] -51 -1
+*-41.639095 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Banco_pruebas.
+[sst_width] 233
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+Banco_pruebas.Memoria_RAM_Conductual.clk
+Banco_pruebas.Memoria_RAM_Conductual.addr_wa[2:0]
+Banco_pruebas.Memoria_RAM_Conductual.we_a
+@22
+Banco_pruebas.Memoria_RAM_Conductual.data_a[9:0]
+@28
+Banco_pruebas.Memoria_RAM_Conductual.addr_ra[2:0]
+Banco_pruebas.Memoria_RAM_Conductual.re_a
+@22
+Banco_pruebas.Memoria_RAM_Conductual.q_a[9:0]
+@200
+-
+-
+@28
+Banco_pruebas.Memoria_RAM_Estructural.clk
+Banco_pruebas.Memoria_RAM_Estructural.addr_wa[2:0]
+Banco_pruebas.Memoria_RAM_Estructural.we_a
+@22
+Banco_pruebas.Memoria_RAM_Estructural.data_a[9:0]
+@28
+Banco_pruebas.Memoria_RAM_Estructural.addr_ra[2:0]
+Banco_pruebas.Memoria_RAM_Estructural.re_a
+@22
+Banco_pruebas.Memoria_RAM_Estructural.q_a[9:0]
+[pattern_trace] 1
+[pattern_trace] 0

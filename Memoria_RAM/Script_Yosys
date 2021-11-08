@@ -1,0 +1,24 @@
+# read design
+read_verilog true_dpram_sclk.v
+hierarchy -check -top true_dpram_sclk
+
+# the high-level stuff
+proc; opt; fsm; opt; memory; opt
+
+# mapping to internal cell library
+techmap; opt
+
+# mapping flip-flops to mycells.lib
+dfflibmap -liberty cmos_cells.lib
+
+# mapping logic to mycells.lib
+abc -liberty cmos_cells.lib
+
+# cleanup
+clean
+
+# diagram drawing
+show -lib cmos_cells.v
+
+# write synthesized design
+write_verilog Memoria_synth.v
