@@ -14,4 +14,4 @@ sim: BancoPruebas_FIFO.vvp
 	vvp BancoPruebas_FIFO.vvp
 	
 gtkwave: FIFO.vcd
-	gtkwave FIFO.vcd
+	gtkwave FIFO.vcd FIFO.gtkw

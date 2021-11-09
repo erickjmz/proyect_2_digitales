@@ -1,0 +1,62 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Nov  9 03:48:11 2021
+[*]
+[dumpfile] "/home/gabo4xz/Git2/proyect_2_digitales/FIFO/FIFO.vcd"
+[dumpfile_mtime] "Tue Nov  9 03:17:50 2021"
+[dumpfile_size] 160067
+[savefile] "/home/gabo4xz/Git2/proyect_2_digitales/FIFO/FIFO.gtkw"
+[timestart] 0
+[size] 1288 599
+[pos] -51 -1
+*-15.124223 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 233
+[signals_width] 198
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+BancoPruebas_FIFO.conductual.clk
+@22
+BancoPruebas_FIFO.conductual.data_in[9:0]
+@28
+BancoPruebas_FIFO.conductual.push
+@22
+BancoPruebas_FIFO.prob.data_out_conduct[9:0]
+@28
+BancoPruebas_FIFO.conductual.pop
+BancoPruebas_FIFO.conductual.we_a
+BancoPruebas_FIFO.conductual.wr_ptr[2:0]
+BancoPruebas_FIFO.conductual.re_a
+BancoPruebas_FIFO.conductual.rd_ptr[2:0]
+BancoPruebas_FIFO.conductual.alm_empty
+BancoPruebas_FIFO.conductual.alm_full
+BancoPruebas_FIFO.conductual.empty
+BancoPruebas_FIFO.conductual.full
+BancoPruebas_FIFO.conductual.um_inf[2:0]
+BancoPruebas_FIFO.conductual.um_sup[2:0]
+@201
+-
+@200
+-
+@28
+BancoPruebas_FIFO.estructural.clk
+@22
+BancoPruebas_FIFO.estructural.data_in[9:0]
+@28
+BancoPruebas_FIFO.estructural.push
+@22
+BancoPruebas_FIFO.prob.data_out_estruct[9:0]
+@28
+BancoPruebas_FIFO.estructural.pop
+BancoPruebas_FIFO.estructural.we_a
+BancoPruebas_FIFO.estructural.wr_ptr[2:0]
+BancoPruebas_FIFO.estructural.re_a
+BancoPruebas_FIFO.estructural.rd_ptr[2:0]
+BancoPruebas_FIFO.estructural.alm_empty
+BancoPruebas_FIFO.estructural.alm_full
+BancoPruebas_FIFO.estructural.empty
+BancoPruebas_FIFO.conductual.full
+BancoPruebas_FIFO.estructural.um_inf[2:0]
+BancoPruebas_FIFO.estructural.um_sup[2:0]
+[pattern_trace] 1
+[pattern_trace] 0
