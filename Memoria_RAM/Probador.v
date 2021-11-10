@@ -50,7 +50,6 @@ module Probador(
 		re_a <= 1;
 		we_a <= 0;
 
-
 		@(posedge clk);
 		addr_ra <= addr_ra+1;
 		re_a <= 1;
@@ -60,6 +59,24 @@ module Probador(
 		addr_ra <= addr_ra+1;
 		re_a <= 1;
 		we_a <= 0;
+
+		@(posedge clk);
+		addr_wa <= addr_wa+1;
+		we_a <= 1;
+		re_a <= 0;
+		data_a <= 0000000001;
+
+		@(posedge clk);
+		addr_wa <= addr_wa+1;
+		we_a <= 1;
+		re_a <= 0;
+		data_a <= 0000000010;
+
+		@(posedge clk);
+		addr_wa <= addr_wa+1;
+		we_a <= 1;
+		re_a <= 0;
+		data_a <= 0000000100;
 
 		$finish;
 	end
