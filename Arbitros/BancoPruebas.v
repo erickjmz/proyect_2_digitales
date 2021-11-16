@@ -1,14 +1,14 @@
 `timescale 	1ns				/ 100ps
-`include "Probador_arbitro.v"
+`include "Probador.v"
 `include "cmos_cells.v"
 `include "arbitro.v"
 `include "arbitro_estruct.v"
 
 
-module BancoPruebas_arbitro; // Testbench
+module BancoPruebas; // Testbench
 
     wire almost_full0,almost_full1,almost_full2,almost_full3;
-    wire empty0_naranja,empty1_naranja,empty2_naranja,empty3_naranja, empty0_morado, empty1_morado ,empty2_morado,empty3_morado;
+    wire empty0_orange,empty1_orange,empty2_orange,empty3_orange, empty0_purple, empty1_purple ,empty2_purple,empty3_purple;
     wire [7:0] empties, empties_estruct;
     wire push;
     wire pop0,pop1,pop2,pop3;
@@ -28,14 +28,14 @@ arbitro arbitro_conductual (
           .almost_full1(almost_full1),
           .almost_full2(almost_full2),
           .almost_full3(almost_full3),  
-          .empty0_naranja(empty0_naranja),
-          .empty1_naranja(empty1_naranja),
-          .empty2_naranja(empty2_naranja),
-          .empty3_naranja(empty3_naranja),
-          .empty0_morado(empty0_morado),
-          .empty1_morado(empty1_morado),
-          .empty2_morado(empty2_morado),
-          .empty3_morado(empty3_morado),
+          .empty0_orange(empty0_orange),
+          .empty1_orange(empty1_orange),
+          .empty2_orange(empty2_orange),
+          .empty3_orange(empty3_orange),
+          .empty0_purple(empty0_purple),
+          .empty1_purple(empty1_purple),
+          .empty2_purple(empty2_purple),
+          .empty3_purple(empty3_purple),
           .push(push),
         //   .push1(push1),
         //   .push2(push2),
@@ -45,8 +45,7 @@ arbitro arbitro_conductual (
           .pop2(pop2),
           .pop3(pop3),
           /*AUTOINST*/
-			    // Outputs
-			    .empties		(empties[7:0]),
+          .empties		(empties[7:0]),
 			    // Inputs
 			    .clk		(clk),
 			    .state		(state[3:0]));
@@ -57,14 +56,14 @@ arbitro_estruct arbitro_estructural (
           .almost_full1(almost_full1),
           .almost_full2(almost_full2),
           .almost_full3(almost_full3),  
-          .empty0_naranja(empty0_naranja),
-          .empty1_naranja(empty1_naranja),
-          .empty2_naranja(empty2_naranja),
-          .empty3_naranja(empty3_naranja),
-          .empty0_morado(empty0_morado),
-          .empty1_morado(empty1_morado),
-          .empty2_morado(empty2_morado),
-          .empty3_morado(empty3_morado),
+          .empty0_orange(empty0_orange),
+          .empty1_orange(empty1_orange),
+          .empty2_orange(empty2_orange),
+          .empty3_orange(empty3_orange),
+          .empty0_purple(empty0_purple),
+          .empty1_purple(empty1_purple),
+          .empty2_purple(empty2_purple),
+          .empty3_purple(empty3_purple),
           .push(push_estruct),
         //   .push1(push1_estruct),
         //   .push2(push2_estruct),
@@ -75,24 +74,23 @@ arbitro_estruct arbitro_estructural (
           .pop3(pop3_estruct),
           .empties(empties_estruct),
           /*AUTOINST*/
-				     // Inputs
-				     .clk		(clk),
+          .clk		(clk),
 				     .state		(state[3:0]));
 
 
-Probador_arbitro Probador(
+Probador Probador(
           .almost_full0(almost_full0),
           .almost_full1(almost_full1),
           .almost_full2(almost_full2),
           .almost_full3(almost_full3),  
-          .empty0_naranja(empty0_naranja),
-          .empty1_naranja(empty1_naranja),
-          .empty2_naranja(empty2_naranja),
-          .empty3_naranja(empty3_naranja),
-          .empty0_morado(empty0_morado),
-          .empty1_morado(empty1_morado),
-          .empty2_morado(empty2_morado),
-          .empty3_morado(empty3_morado),
+          .empty0_orange(empty0_orange),
+          .empty1_orange(empty1_orange),
+          .empty2_orange(empty2_orange),
+          .empty3_orange(empty3_orange),
+          .empty0_purple(empty0_purple),
+          .empty1_purple(empty1_purple),
+          .empty2_purple(empty2_purple),
+          .empty3_purple(empty3_purple),
           .push(push),
         //   .push1(push1),
         //   .push2(push2),
@@ -102,8 +100,7 @@ Probador_arbitro Probador(
           .pop2(pop2),
           .pop3(pop3),
           /*AUTOINST*/
-			  // Outputs
-			  .clk			(clk),
+          .clk			(clk),
 			  .state		(state[3:0]),
 			  // Inputs
 			  .empties		(empties[7:0]),

@@ -1,5 +1,5 @@
 $date
-	Mon Nov 15 20:23:56 2021
+	Mon Nov 15 21:16:22 2021
 $end
 $version
 	Icarus Verilog
@@ -11,7 +11,7 @@ $scope module BUF $end
 $var wire 1 ! A $end
 $var wire 1 " Y $end
 $upscope $end
-$scope module BancoPruebas_arbitro $end
+$scope module BancoPruebas $end
 $var wire 4 # state [3:0] $end
 $var wire 1 $ push_estruct $end
 $var wire 1 % push $end
@@ -23,14 +23,14 @@ $var wire 1 * pop1_estruct $end
 $var wire 1 + pop1 $end
 $var wire 1 , pop0_estruct $end
 $var wire 1 - pop0 $end
-$var wire 1 . empty3_naranja $end
-$var wire 1 / empty3_morado $end
-$var wire 1 0 empty2_naranja $end
-$var wire 1 1 empty2_morado $end
-$var wire 1 2 empty1_naranja $end
-$var wire 1 3 empty1_morado $end
-$var wire 1 4 empty0_naranja $end
-$var wire 1 5 empty0_morado $end
+$var wire 1 . empty3_purple $end
+$var wire 1 / empty3_orange $end
+$var wire 1 0 empty2_purple $end
+$var wire 1 1 empty2_orange $end
+$var wire 1 2 empty1_purple $end
+$var wire 1 3 empty1_orange $end
+$var wire 1 4 empty0_purple $end
+$var wire 1 5 empty0_orange $end
 $var wire 8 6 empties_estruct [7:0] $end
 $var wire 8 7 empties [7:0] $end
 $var wire 1 8 clk $end
@@ -52,14 +52,14 @@ $var reg 1 ; almost_full1 $end
 $var reg 1 : almost_full2 $end
 $var reg 1 9 almost_full3 $end
 $var reg 1 8 clk $end
-$var reg 1 5 empty0_morado $end
-$var reg 1 4 empty0_naranja $end
-$var reg 1 3 empty1_morado $end
-$var reg 1 2 empty1_naranja $end
-$var reg 1 1 empty2_morado $end
-$var reg 1 0 empty2_naranja $end
-$var reg 1 / empty3_morado $end
-$var reg 1 . empty3_naranja $end
+$var reg 1 5 empty0_orange $end
+$var reg 1 4 empty0_purple $end
+$var reg 1 3 empty1_orange $end
+$var reg 1 2 empty1_purple $end
+$var reg 1 1 empty2_orange $end
+$var reg 1 0 empty2_purple $end
+$var reg 1 / empty3_orange $end
+$var reg 1 . empty3_purple $end
 $var reg 4 ? state [3:0] $end
 $upscope $end
 $scope module arbitro_conductual $end
@@ -68,14 +68,14 @@ $var wire 1 ; almost_full1 $end
 $var wire 1 : almost_full2 $end
 $var wire 1 9 almost_full3 $end
 $var wire 1 8 clk $end
-$var wire 1 5 empty0_morado $end
-$var wire 1 4 empty0_naranja $end
-$var wire 1 3 empty1_morado $end
-$var wire 1 2 empty1_naranja $end
-$var wire 1 1 empty2_morado $end
-$var wire 1 0 empty2_naranja $end
-$var wire 1 / empty3_morado $end
-$var wire 1 . empty3_naranja $end
+$var wire 1 5 empty0_orange $end
+$var wire 1 4 empty0_purple $end
+$var wire 1 3 empty1_orange $end
+$var wire 1 2 empty1_purple $end
+$var wire 1 1 empty2_orange $end
+$var wire 1 0 empty2_purple $end
+$var wire 1 / empty3_orange $end
+$var wire 1 . empty3_purple $end
 $var wire 4 @ state [3:0] $end
 $var reg 8 A empties [7:0] $end
 $var reg 1 - pop0 $end
@@ -90,14 +90,14 @@ $var wire 1 ; almost_full1 $end
 $var wire 1 : almost_full2 $end
 $var wire 1 9 almost_full3 $end
 $var wire 1 8 clk $end
-$var wire 1 5 empty0_morado $end
-$var wire 1 4 empty0_naranja $end
-$var wire 1 3 empty1_morado $end
-$var wire 1 2 empty1_naranja $end
-$var wire 1 1 empty2_morado $end
-$var wire 1 0 empty2_naranja $end
-$var wire 1 / empty3_morado $end
-$var wire 1 . empty3_naranja $end
+$var wire 1 5 empty0_orange $end
+$var wire 1 4 empty0_purple $end
+$var wire 1 3 empty1_orange $end
+$var wire 1 2 empty1_purple $end
+$var wire 1 1 empty2_orange $end
+$var wire 1 0 empty2_purple $end
+$var wire 1 / empty3_orange $end
+$var wire 1 . empty3_purple $end
 $var wire 4 B state [3:0] $end
 $var wire 1 $ push $end
 $var wire 1 & pop3 $end
@@ -128,35 +128,35 @@ $var wire 1 W _02_ $end
 $var wire 1 X _01_ $end
 $var wire 1 Y _00_ $end
 $scope module _22_ $end
-$var wire 1 / A $end
+$var wire 1 . A $end
 $var wire 1 X Y $end
 $upscope $end
 $scope module _23_ $end
-$var wire 1 1 A $end
+$var wire 1 0 A $end
 $var wire 1 W Y $end
 $upscope $end
 $scope module _24_ $end
-$var wire 1 3 A $end
+$var wire 1 2 A $end
 $var wire 1 V Y $end
 $upscope $end
 $scope module _25_ $end
-$var wire 1 0 A $end
+$var wire 1 1 A $end
 $var wire 1 U Y $end
 $upscope $end
 $scope module _26_ $end
-$var wire 1 5 A $end
+$var wire 1 4 A $end
 $var wire 1 T Y $end
 $upscope $end
 $scope module _27_ $end
-$var wire 1 . A $end
+$var wire 1 / A $end
 $var wire 1 S Y $end
 $upscope $end
 $scope module _28_ $end
-$var wire 1 2 A $end
+$var wire 1 3 A $end
 $var wire 1 R Y $end
 $upscope $end
 $scope module _29_ $end
-$var wire 1 4 A $end
+$var wire 1 5 A $end
 $var wire 1 Q Y $end
 $upscope $end
 $scope module _30_ $end
@@ -262,7 +262,7 @@ $var wire 1 H B $end
 $var wire 1 F Y $end
 $upscope $end
 $scope module _51_ $end
-$var wire 1 0 A $end
+$var wire 1 1 A $end
 $var wire 1 S B $end
 $var wire 1 E Y $end
 $upscope $end
@@ -272,7 +272,7 @@ $var wire 1 E B $end
 $var wire 1 & Y $end
 $upscope $end
 $scope module _53_ $end
-$var wire 1 0 A $end
+$var wire 1 1 A $end
 $var wire 1 F B $end
 $var wire 1 ( Y $end
 $upscope $end
@@ -426,7 +426,7 @@ b1 A
 1+
 0-
 0Q
-14
+15
 18
 #16
 08
@@ -451,7 +451,7 @@ b11 7
 b11 >
 b11 A
 0R
-12
+13
 18
 #24
 08
@@ -470,7 +470,7 @@ b111 7
 b111 >
 b111 A
 0U
-10
+11
 18
 #32
 08
@@ -489,7 +489,7 @@ b1111 7
 b1111 >
 b1111 A
 0S
-1.
+1/
 18
 #40
 08
@@ -517,10 +517,10 @@ b0 7
 b0 >
 b0 A
 1Q
-0.
-00
-02
-04
+0/
+01
+03
+05
 18
 #48
 08
@@ -570,8 +570,8 @@ b101 A
 1+
 0-
 0Q
-10
-14
+11
+15
 18
 #72
 08
@@ -596,9 +596,9 @@ b1011 A
 1)
 0+
 0R
-1.
-00
-12
+1/
+01
+13
 18
 #76
 08

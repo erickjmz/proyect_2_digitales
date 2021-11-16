@@ -1,18 +1,15 @@
-all: sintesis autoinst execute sim gtkwave
+all: sintesis execute sim gtkwave
 
 sintesis: arbitro.ys
 	yosys arbitro.ys
 	sed -i 's/arbitro/arbitro_estruct/' arbitro_estruct.v
 
-autoinst:
-	emacs --batch  BancoPruebas_arbitro.v  -f verilog-batch-delete-auto
-	emacs --batch  BancoPruebas_arbitro.v  -f verilog-batch-inject-auto
 
-execute: BancoPruebas_arbitro.v
-	iverilog -o BancoPruebas_arbitro.vvp BancoPruebas_arbitro.v
+execute: BancoPruebas.v
+	iverilog -o BancoPruebas.vvp BancoPruebas.v
 
-sim: BancoPruebas_arbitro.vvp
-	vvp BancoPruebas_arbitro.vvp
+sim: BancoPruebas.vvp
+	vvp BancoPruebas.vvp
 	
 gtkwave: Arbitro.vcd
 	gtkwave Arbitro.vcd
