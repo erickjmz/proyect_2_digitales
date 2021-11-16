@@ -12,40 +12,46 @@ module Banco_pruebas;
 	wire  valid;
 	wire [4:0] data_out;
 
-	contadores contadores_cond(
-		.idx( idx[2:0]),
-		.reset_L( reset_L),
-		.clk( clk),
-		.pop_0( pop_0),
-		.pop_1( pop_1),
-		.pop_2( pop_2),
-		.pop_3( pop_3),
-		.pop_4( pop_4),
-		.valid( valid),
-		.data_out( data_out[4:0]) );
+	contadores contadores_cond( /*AUTOINST*/
+				   // Outputs
+				   .valid		(valid),
+				   .data_out		(data_out[4:0]),
+				   // Inputs
+				   .idx			(idx[2:0]),
+				   .reset_L		(reset_L),
+				   .clk			(clk),
+				   .pop_0		(pop_0),
+				   .pop_1		(pop_1),
+				   .pop_2		(pop_2),
+				   .pop_3		(pop_3),
+				   .pop_4		(pop_4));
 
-	contadores_synth contadores_Estructural(
-	.idx( idx[2:0]),
-	.reset_L( reset_L),
-	.clk( clk),
-	.pop_0( pop_0),
-	.pop_1( pop_1),
-	.pop_2( pop_2),
-	.pop_3( pop_3),
-	.pop_4( pop_4),
-	.valid( valid),
-	.data_out( data_out[4:0]));
+	contadores_synth contadores_Estructural( /*AUTOINST*/
+						// Outputs
+						.data_out	(data_out[4:0]),
+						.valid		(valid),
+						// Inputs
+						.clk		(clk),
+						.idx		(idx[2:0]),
+						.pop_0		(pop_0),
+						.pop_1		(pop_1),
+						.pop_2		(pop_2),
+						.pop_3		(pop_3),
+						.pop_4		(pop_4),
+						.reset_L	(reset_L));
 
-	Probador Probador(
-	.idx( idx[2:0]),
-	.reset_L( reset_L),
-	.clk( clk),
-	.pop_0( pop_0),
-	.pop_1( pop_1),
-	.pop_2( pop_2),
-	.pop_3( pop_3),
-	.pop_4( pop_4),
-	.valid( valid),
-	.data_out( data_out[4:0]) );
+	Probador Probador( /*AUTOINST*/
+			  // Outputs
+			  .idx			(idx[2:0]),
+			  .reset_L		(reset_L),
+			  .clk			(clk),
+			  .pop_0		(pop_0),
+			  .pop_1		(pop_1),
+			  .pop_2		(pop_2),
+			  .pop_3		(pop_3),
+			  .pop_4		(pop_4),
+			  // Inputs
+			  .valid		(valid),
+			  .data_out		(data_out[4:0]));
 
 endmodule
