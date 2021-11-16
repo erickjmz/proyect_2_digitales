@@ -21,10 +21,14 @@ module Probador(
 
 		@(posedge clk);
 
+
 		@(posedge clk);
 		reset_L = 1;
 
+		@(posedge clk);
+
     @(posedge clk);
+		pop_2 <= 1;
 		pop_0 <= 1;
 
 		@(posedge clk);
@@ -32,26 +36,42 @@ module Probador(
 		@(posedge clk);
 		pop_0 <= 0;
 
-
 		@(posedge clk);
 		idx <= 0;
 
 		@(posedge clk);
 		pop_1 <= 1;
-		
+
 		@(posedge clk);
 		pop_1 <= 0;
+		pop_2 <= 0;
+		pop_3 <= 1;
 
 		@(posedge clk);
 		idx <= 1;
 
 		@(posedge clk);
+		idx <= 2;
+		pop_3 <= 0;
+
+		@(posedge clk);
+		pop_4 <= 1;
+		idx <= 3;
+
+		@(posedge clk);
+		pop_4 <= 0;
+
+		@(posedge clk);
+		idx <= 4;
 
 		@(posedge clk);
 
 		@(posedge clk);
 
 		@(posedge clk);
+
+		@(posedge clk);
+		
 		$finish;
 	end
 

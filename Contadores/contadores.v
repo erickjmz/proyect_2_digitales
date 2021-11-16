@@ -18,27 +18,25 @@ module contadores
 	begin
 		if (reset_L == 0) begin
 			data_out <= 0;
-			data_0 = 0;
-			data_1 = 0;
-			data_2 = 0;
-			data_3 = 0;
-			data_4 = 0;
-			valid = 0;
+			data_0 <= 0;
+			data_1 <= 0;
+			data_2 <= 0;
+			data_3 <= 0;
+			data_4 <= 0;
+			valid <= 0;
 		end else begin
-			valid = 1;
-
+			valid <= 1;
 			if (pop_0 == 1) begin
-				data_0 = data_0 + 1;
-			end else if (pop_1 == 1) begin
-				data_1 = data_1 + 1;
-			end else if (pop_2 == 1) begin
-				data_2 = data_2 + 1;
-			end else if (pop_3 == 1) begin
-				data_3 = data_3 + 1;
-			end else if (pop_4 == 1) begin
-				data_4 = data_4 + 1;
+				data_0 <= data_0 + 1;
+			end if (pop_1 == 1) begin
+				data_1 <= data_1 + 1;
+			end if (pop_2 == 1) begin
+				data_2 <= data_2 + 1;
+			end if (pop_3 == 1) begin
+				data_3 <= data_3 + 1;
+			end if (pop_4 == 1) begin
+				data_4 <= data_4 + 1;
 			end
-
 			if (idx == 0 & data_0 != 0) begin
 				data_out <= data_0;
 			end else if (idx == 3'b001 & data_1 != 0 ) begin
@@ -52,5 +50,4 @@ module contadores
 			end
 		end
 	end
-
 endmodule
