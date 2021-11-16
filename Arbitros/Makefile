@@ -12,4 +12,4 @@ sim: BancoPruebas.vvp
 	vvp BancoPruebas.vvp
 	
 gtkwave: Arbitro.vcd
-	gtkwave Arbitro.vcd
+	gtkwave Arbitro.vcd Arbitro.gtkw

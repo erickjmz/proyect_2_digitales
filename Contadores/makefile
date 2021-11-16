@@ -10,4 +10,4 @@ dependencia1:
 	$(CC1) -o Banco_pruebas Banco_pruebas.v
 	$(CC1) -o Probador Probador.v
 	vvp Banco_pruebas
-	$(CC2) contadores.vcd contadores.gtkw
+	$(CC2) contadores.vcd Contadores.gtkw
