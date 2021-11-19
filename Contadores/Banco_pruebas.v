@@ -8,7 +8,7 @@ module Banco_pruebas;
 	wire [2:0] idx;
 	wire reset_L;
 	wire clk;
-	wire pop_0, pop_1, pop_2, pop_3, pop_4;
+	wire pop_0, pop_1, pop_2, pop_3, pop_4, idle;
 	wire  valid;
 	wire [4:0] data_out;
 
@@ -20,6 +20,7 @@ module Banco_pruebas;
 				   .idx			(idx[2:0]),
 				   .reset_L		(reset_L),
 				   .clk			(clk),
+					 .idle		(idle),
 				   .pop_0		(pop_0),
 				   .pop_1		(pop_1),
 				   .pop_2		(pop_2),
@@ -33,6 +34,7 @@ module Banco_pruebas;
 						// Inputs
 						.clk		(clk),
 						.idx		(idx[2:0]),
+						.idle		(idle),
 						.pop_0		(pop_0),
 						.pop_1		(pop_1),
 						.pop_2		(pop_2),
@@ -43,6 +45,7 @@ module Banco_pruebas;
 	Probador Probador( /*AUTOINST*/
 			  // Outputs
 			  .idx			(idx[2:0]),
+				.idle		(idle),
 			  .reset_L		(reset_L),
 			  .clk			(clk),
 			  .pop_0		(pop_0),

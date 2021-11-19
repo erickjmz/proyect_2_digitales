@@ -1,20 +1,20 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Tue Nov 16 22:31:57 2021
+[*] Fri Nov 19 00:58:23 2021
 [*]
-[dumpfile] "/home/gabo4xz/Git2/proyect_2_digitales/Contadores/contadores.vcd"
-[dumpfile_mtime] "Tue Nov 16 22:25:58 2021"
-[dumpfile_size] 47614
-[savefile] "/home/gabo4xz/Git2/proyect_2_digitales/Contadores/Contadores.gtkw"
+[dumpfile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/Contadores/contadores.vcd"
+[dumpfile_mtime] "Fri Nov 19 00:56:12 2021"
+[dumpfile_size] 36418
+[savefile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/Contadores/Contadores.gtkw"
 [timestart] 0
-[size] 1000 599
-[pos] 78 177
+[size] 1848 1136
+[pos] 72 27
 *-43.456367 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] Banco_pruebas.
 [sst_width] 233
 [signals_width] 134
 [sst_expanded] 1
-[sst_vpaned_height] 144
+[sst_vpaned_height] 331
 @200
 -Conductual
 @28
@@ -34,6 +34,8 @@ Banco_pruebas.contadores_cond.pop_2
 Banco_pruebas.contadores_cond.pop_3
 Banco_pruebas.contadores_cond.pop_4
 Banco_pruebas.contadores_cond.idx[2:0]
+Banco_pruebas.contadores_cond.idle
+Banco_pruebas.contadores_cond.valid
 @22
 Banco_pruebas.contadores_cond.data_out[4:0]
 @200
@@ -55,7 +57,11 @@ Banco_pruebas.contadores_Estructural.pop_2
 Banco_pruebas.contadores_Estructural.pop_3
 Banco_pruebas.contadores_Estructural.pop_4
 Banco_pruebas.contadores_Estructural.idx[2:0]
-@23
+@29
+Banco_pruebas.contadores_Estructural.idle
+@28
+Banco_pruebas.contadores_Estructural.valid
+@22
 Banco_pruebas.contadores_Estructural.data_out[4:0]
 [pattern_trace] 1
 [pattern_trace] 0

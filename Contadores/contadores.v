@@ -6,6 +6,7 @@ module contadores
 (
 	input wire [2:0] idx,
 	input wire reset_L,
+	input wire idle,
 	input wire clk,
 	input wire pop_0, pop_1, pop_2, pop_3, pop_4,
 	output reg  valid,
@@ -25,7 +26,9 @@ module contadores
 			data_4 <= 0;
 			valid <= 0;
 		end else begin
-			valid <= 1;
+			if (idle == 0) begin
+				valid <= 0;
+			end
 			if (pop_0 == 1) begin
 				data_0 <= data_0 + 1;
 			end if (pop_1 == 1) begin
@@ -37,15 +40,20 @@ module contadores
 			end if (pop_4 == 1) begin
 				data_4 <= data_4 + 1;
 			end
-			if (idx == 0 & data_0 != 0) begin
+			if (idx == 0 & idle) begin
+				valid <= 1;
 				data_out <= data_0;
-			end else if (idx == 3'b001 & data_1 != 0 ) begin
+			end else if (idx == 3'b001 & idle ) begin
+				valid <= 1;
 				data_out <= data_1;
-			end else if (idx == 3'b010 & data_2 != 0) begin
+			end else if (idx == 3'b010 & idle) begin
+				valid <= 1;
 				data_out <= data_2;
-			end else if (idx == 3'b011 & data_3 != 0) begin
+			end else if (idx == 3'b011 & idle) begin
+				valid <= 1;
 				data_out <= data_3;
-			end else if (idx == 3'b100 & data_4 != 0) begin
+			end else if (idx == 3'b100 & idle) begin
+				valid <= 1;
 				data_out <= data_4;
 			end
 		end

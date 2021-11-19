@@ -2,7 +2,7 @@ module Probador(
 	output reg [2:0] idx,
 	output reg reset_L,
 	output reg clk,
-	output reg pop_0, pop_1, pop_2, pop_3, pop_4,
+	output reg pop_0, pop_1, pop_2, pop_3, pop_4, idle,
 	input wire  valid,
 	input wire [4:0] data_out
 	);
@@ -17,6 +17,7 @@ module Probador(
 		pop_2 = 0;
 		pop_3 = 0;
 		pop_4 = 0;
+		idle = 0;
 		idx = 0;
 
 		@(posedge clk);
@@ -35,6 +36,7 @@ module Probador(
 
 		@(posedge clk);
 		pop_0 <= 0;
+		idle <= 1;
 
 		@(posedge clk);
 		idx <= 0;
@@ -46,6 +48,12 @@ module Probador(
 		pop_1 <= 0;
 		pop_2 <= 0;
 		pop_3 <= 1;
+		idle <= 0;
+
+		@(posedge clk);
+
+		@(posedge clk);
+		idle <= 1;
 
 		@(posedge clk);
 		idx <= 1;
@@ -71,7 +79,7 @@ module Probador(
 		@(posedge clk);
 
 		@(posedge clk);
-		
+
 		$finish;
 	end
 
