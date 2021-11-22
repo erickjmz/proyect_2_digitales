@@ -2,18 +2,18 @@
 
 (* top =  1  *)
 (* src = "FIFO_estruct.v:3" *)
-module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_inferior, data_out, almost_full, almost_empty, empty);
-  (* src = "FIFO_estruct.v:43" *)
+module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, alm_full, alm_empty, empty);
+  (* src = "FIFO_estruct.v:45" *)
   wire [3:0] _000_;
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   wire _001_;
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   wire [2:0] _002_;
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   wire [2:0] _003_;
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   wire [2:0] _004_;
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   wire [2:0] _005_;
   wire _006_;
   wire _007_;
@@ -155,14 +155,14 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
   wire _143_;
   wire _144_;
   (* src = "FIFO_estruct.v:13" *)
-  output almost_empty;
+  output alm_empty;
   (* src = "FIFO_estruct.v:12" *)
-  output almost_full;
+  output alm_full;
   (* src = "FIFO_estruct.v:4" *)
   input clk;
-  (* src = "FIFO_estruct.v:19" *)
+  (* src = "FIFO_estruct.v:18" *)
   wire [3:0] contador;
-  (* src = "FIFO_estruct.v:8" *)
+  (* src = "FIFO_estruct.v:10" *)
   input [9:0] data_in;
   (* src = "FIFO_estruct.v:11" *)
   output [9:0] data_out;
@@ -172,21 +172,21 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
   wire [2:0] low_space;
   (* src = "FIFO_estruct.v:17" *)
   wire [2:0] much_space;
-  (* src = "FIFO_estruct.v:7" *)
-  input pop;
   (* src = "FIFO_estruct.v:6" *)
+  input pop;
+  (* src = "FIFO_estruct.v:5" *)
   input push;
   (* src = "FIFO_estruct.v:16" *)
   wire [2:0] rd_ptr;
-  (* src = "FIFO_estruct.v:18" *)
+  (* src = "FIFO_estruct.v:19" *)
   wire re_a;
-  (* src = "FIFO_estruct.v:5" *)
-  input [3:0] state;
-  (* src = "FIFO_estruct.v:10" *)
-  input [2:0] umbral_inferior;
   (* src = "FIFO_estruct.v:9" *)
-  input [2:0] umbral_superior;
-  (* src = "FIFO_estruct.v:18" *)
+  input [3:0] state;
+  (* src = "FIFO_estruct.v:8" *)
+  input [2:0] um_inf;
+  (* src = "FIFO_estruct.v:7" *)
+  input [2:0] um_sup;
+  (* src = "FIFO_estruct.v:19" *)
   wire we_a;
   (* src = "FIFO_estruct.v:16" *)
   wire [2:0] wr_ptr;
@@ -336,7 +336,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
   NOR _177_ (
     .A(_136_),
     .B(_138_),
-    .Y(almost_empty)
+    .Y(alm_empty)
   );
   NOR _178_ (
     .A(_107_),
@@ -391,7 +391,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
   NOR _188_ (
     .A(_134_),
     .B(_009_),
-    .Y(almost_full)
+    .Y(alm_full)
   );
   NOR _189_ (
     .A(contador[2]),
@@ -858,7 +858,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .Y(_090_)
   );
   NOR _283_ (
-    .A(umbral_inferior[0]),
+    .A(um_inf[0]),
     .B(_088_),
     .Y(_091_)
   );
@@ -878,7 +878,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .Y(_093_)
   );
   NOR _287_ (
-    .A(umbral_inferior[1]),
+    .A(um_inf[1]),
     .B(_088_),
     .Y(_094_)
   );
@@ -898,7 +898,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .Y(_096_)
   );
   NOR _291_ (
-    .A(umbral_inferior[2]),
+    .A(um_inf[2]),
     .B(_088_),
     .Y(_097_)
   );
@@ -918,7 +918,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .Y(_099_)
   );
   NOR _295_ (
-    .A(umbral_superior[0]),
+    .A(um_sup[0]),
     .B(_088_),
     .Y(_100_)
   );
@@ -938,7 +938,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .Y(_102_)
   );
   NOR _299_ (
-    .A(umbral_superior[1]),
+    .A(um_sup[1]),
     .B(_088_),
     .Y(_103_)
   );
@@ -958,7 +958,7 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .Y(_105_)
   );
   NOR _303_ (
-    .A(umbral_superior[2]),
+    .A(um_sup[2]),
     .B(_088_),
     .Y(_106_)
   );
@@ -967,103 +967,103 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
     .B(_106_),
     .Y(_002_[2])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _305_ (
     .C(clk),
     .D(_001_),
     .Q(empty)
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _306_ (
     .C(clk),
     .D(_005_[0]),
     .Q(wr_ptr[0])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _307_ (
     .C(clk),
     .D(_005_[1]),
     .Q(wr_ptr[1])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _308_ (
     .C(clk),
     .D(_005_[2]),
     .Q(wr_ptr[2])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _309_ (
     .C(clk),
     .D(_004_[0]),
     .Q(rd_ptr[0])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _310_ (
     .C(clk),
     .D(_004_[1]),
     .Q(rd_ptr[1])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _311_ (
     .C(clk),
     .D(_004_[2]),
     .Q(rd_ptr[2])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _312_ (
     .C(clk),
     .D(_000_[0]),
     .Q(contador[0])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _313_ (
     .C(clk),
     .D(_000_[1]),
     .Q(contador[1])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _314_ (
     .C(clk),
     .D(_000_[2]),
     .Q(contador[2])
   );
-  (* src = "FIFO_estruct.v:43" *)
+  (* src = "FIFO_estruct.v:45" *)
   DFF _315_ (
     .C(clk),
     .D(_000_[3]),
     .Q(contador[3])
   );
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   DFF _316_ (
     .C(clk),
     .D(_002_[0]),
     .Q(low_space[0])
   );
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   DFF _317_ (
     .C(clk),
     .D(_002_[1]),
     .Q(low_space[1])
   );
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   DFF _318_ (
     .C(clk),
     .D(_002_[2]),
     .Q(low_space[2])
   );
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   DFF _319_ (
     .C(clk),
     .D(_003_[0]),
     .Q(much_space[0])
   );
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   DFF _320_ (
     .C(clk),
     .D(_003_[1]),
     .Q(much_space[1])
   );
-  (* src = "FIFO_estruct.v:32" *)
+  (* src = "FIFO_estruct.v:34" *)
   DFF _321_ (
     .C(clk),
     .D(_003_[2]),
@@ -1083,9 +1083,9 @@ module FIFO_estruct(clk, state, push, pop, data_in, umbral_superior, umbral_infe
   );
 endmodule
 
-(* src = "true_dpram_sclk_estruct.v:11" *)
+(* src = "true_dpram_sclk_estruct.v:5" *)
 module true_dpram_sclk_estruct(data_a, addr_wa, addr_ra, we_a, re_a, clk, state, q_a);
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   wire [9:0] _0000_;
   wire _0001_;
   wire _0002_;
@@ -1781,15 +1781,15 @@ module true_dpram_sclk_estruct(data_a, addr_wa, addr_ra, we_a, re_a, clk, state,
   wire _0692_;
   wire _0693_;
   wire _0694_;
-  (* src = "true_dpram_sclk_estruct.v:16" *)
+  (* src = "true_dpram_sclk_estruct.v:8" *)
   input [2:0] addr_ra;
-  (* src = "true_dpram_sclk_estruct.v:15" *)
+  (* src = "true_dpram_sclk_estruct.v:8" *)
   input [2:0] addr_wa;
-  (* src = "true_dpram_sclk_estruct.v:21" *)
+  (* src = "true_dpram_sclk_estruct.v:9" *)
   input clk;
-  (* src = "true_dpram_sclk_estruct.v:13" *)
+  (* src = "true_dpram_sclk_estruct.v:7" *)
   input [9:0] data_a;
-  (* src = "true_dpram_sclk_estruct.v:23" *)
+  (* src = "true_dpram_sclk_estruct.v:11" *)
   output [9:0] q_a;
   wire [9:0] \ram[0] ;
   wire [9:0] \ram[1] ;
@@ -1799,11 +1799,11 @@ module true_dpram_sclk_estruct(data_a, addr_wa, addr_ra, we_a, re_a, clk, state,
   wire [9:0] \ram[5] ;
   wire [9:0] \ram[6] ;
   wire [9:0] \ram[7] ;
-  (* src = "true_dpram_sclk_estruct.v:20" *)
+  (* src = "true_dpram_sclk_estruct.v:9" *)
   input re_a;
-  (* src = "true_dpram_sclk_estruct.v:22" *)
+  (* src = "true_dpram_sclk_estruct.v:10" *)
   input [3:0] state;
-  (* src = "true_dpram_sclk_estruct.v:18" *)
+  (* src = "true_dpram_sclk_estruct.v:9" *)
   input we_a;
   NOT _0695_ (
     .A(\ram[1] [0]),
@@ -5355,61 +5355,61 @@ module true_dpram_sclk_estruct(data_a, addr_wa, addr_ra, we_a, re_a, clk, state,
     .D(_0070_),
     .Q(\ram[6] [9])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1429_ (
     .C(clk),
     .D(_0000_[0]),
     .Q(q_a[0])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1430_ (
     .C(clk),
     .D(_0000_[1]),
     .Q(q_a[1])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1431_ (
     .C(clk),
     .D(_0000_[2]),
     .Q(q_a[2])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1432_ (
     .C(clk),
     .D(_0000_[3]),
     .Q(q_a[3])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1433_ (
     .C(clk),
     .D(_0000_[4]),
     .Q(q_a[4])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1434_ (
     .C(clk),
     .D(_0000_[5]),
     .Q(q_a[5])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1435_ (
     .C(clk),
     .D(_0000_[6]),
     .Q(q_a[6])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1436_ (
     .C(clk),
     .D(_0000_[7]),
     .Q(q_a[7])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1437_ (
     .C(clk),
     .D(_0000_[8]),
     .Q(q_a[8])
   );
-  (* src = "true_dpram_sclk_estruct.v:31" *)
+  (* src = "true_dpram_sclk_estruct.v:16" *)
   DFF _1438_ (
     .C(clk),
     .D(_0000_[9]),

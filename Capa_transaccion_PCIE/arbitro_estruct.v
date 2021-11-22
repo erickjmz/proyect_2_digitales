@@ -2,8 +2,8 @@
 
 (* top =  1  *)
 (* src = "arbitro_estruct.v:1" *)
-module arbitro_estruct(clk, almost_full0, almost_full1, almost_full2, almost_full3, state, empty0_naranja, empty1_naranja, empty2_naranja, empty3_naranja, empty0_morado, empty1_morado, empty2_morado, empty3_morado, push, pop0, pop1, pop2, pop3, empties);
-  (* src = "arbitro_estruct.v:27" *)
+module arbitro_estruct(clk, almost_full0, almost_full1, almost_full2, almost_full3, empty0_orange, empty1_orange, empty2_orange, empty3_orange, empty0_purple, empty1_purple, empty2_purple, empty3_purple, state, push, pop0, pop1, pop2, pop3, empties);
+  (* src = "arbitro_estruct.v:24" *)
   wire _00_;
   wire _01_;
   wire _02_;
@@ -36,66 +36,66 @@ module arbitro_estruct(clk, almost_full0, almost_full1, almost_full2, almost_ful
   input almost_full3;
   (* src = "arbitro_estruct.v:2" *)
   input clk;
-  (* src = "arbitro_estruct.v:24" *)
-  output [7:0] empties;
-  (* src = "arbitro_estruct.v:12" *)
-  input empty0_morado;
-  (* src = "arbitro_estruct.v:8" *)
-  input empty0_naranja;
-  (* src = "arbitro_estruct.v:13" *)
-  input empty1_morado;
-  (* src = "arbitro_estruct.v:9" *)
-  input empty1_naranja;
-  (* src = "arbitro_estruct.v:14" *)
-  input empty2_morado;
-  (* src = "arbitro_estruct.v:10" *)
-  input empty2_naranja;
-  (* src = "arbitro_estruct.v:15" *)
-  input empty3_morado;
-  (* src = "arbitro_estruct.v:11" *)
-  input empty3_naranja;
-  (* src = "arbitro_estruct.v:20" *)
-  output pop0;
   (* src = "arbitro_estruct.v:21" *)
+  output [7:0] empties;
+  (* src = "arbitro_estruct.v:7" *)
+  input empty0_orange;
+  (* src = "arbitro_estruct.v:11" *)
+  input empty0_purple;
+  (* src = "arbitro_estruct.v:8" *)
+  input empty1_orange;
+  (* src = "arbitro_estruct.v:12" *)
+  input empty1_purple;
+  (* src = "arbitro_estruct.v:9" *)
+  input empty2_orange;
+  (* src = "arbitro_estruct.v:13" *)
+  input empty2_purple;
+  (* src = "arbitro_estruct.v:10" *)
+  input empty3_orange;
+  (* src = "arbitro_estruct.v:14" *)
+  input empty3_purple;
+  (* src = "arbitro_estruct.v:17" *)
+  output pop0;
+  (* src = "arbitro_estruct.v:18" *)
   output pop1;
-  (* src = "arbitro_estruct.v:22" *)
+  (* src = "arbitro_estruct.v:19" *)
   output pop2;
-  (* src = "arbitro_estruct.v:23" *)
+  (* src = "arbitro_estruct.v:20" *)
   output pop3;
   (* src = "arbitro_estruct.v:16" *)
   output push;
-  (* src = "arbitro_estruct.v:7" *)
+  (* src = "arbitro_estruct.v:15" *)
   input [3:0] state;
   NOT _22_ (
-    .A(empty3_morado),
+    .A(empty3_purple),
     .Y(_01_)
   );
   NOT _23_ (
-    .A(empty2_morado),
+    .A(empty2_purple),
     .Y(_02_)
   );
   NOT _24_ (
-    .A(empty1_morado),
+    .A(empty1_purple),
     .Y(_03_)
   );
   NOT _25_ (
-    .A(empty2_naranja),
+    .A(empty2_orange),
     .Y(_04_)
   );
   NOT _26_ (
-    .A(empty0_morado),
+    .A(empty0_purple),
     .Y(_05_)
   );
   NOT _27_ (
-    .A(empty3_naranja),
+    .A(empty3_orange),
     .Y(_06_)
   );
   NOT _28_ (
-    .A(empty1_naranja),
+    .A(empty1_orange),
     .Y(_07_)
   );
   NOT _29_ (
-    .A(empty0_naranja),
+    .A(empty0_orange),
     .Y(_08_)
   );
   NOT _30_ (
@@ -201,7 +201,7 @@ module arbitro_estruct(clk, almost_full0, almost_full1, almost_full2, almost_ful
     .Y(_19_)
   );
   NAND _51_ (
-    .A(empty2_naranja),
+    .A(empty2_orange),
     .B(_06_),
     .Y(_20_)
   );
@@ -211,7 +211,7 @@ module arbitro_estruct(clk, almost_full0, almost_full1, almost_full2, almost_ful
     .Y(pop3)
   );
   NOR _53_ (
-    .A(empty2_naranja),
+    .A(empty2_orange),
     .B(_19_),
     .Y(pop2)
   );
@@ -225,7 +225,7 @@ module arbitro_estruct(clk, almost_full0, almost_full1, almost_full2, almost_ful
     .B(_21_),
     .Y(pop0)
   );
-  (* src = "arbitro_estruct.v:27" *)
+  (* src = "arbitro_estruct.v:24" *)
   DFF _56_ (
     .C(clk),
     .D(_00_),
