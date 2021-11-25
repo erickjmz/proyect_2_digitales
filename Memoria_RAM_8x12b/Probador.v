@@ -1,9 +1,9 @@
 module Probador(
-	output reg [9:0] data_a,
+	output reg [11:0] data_a,
 	output reg [2:0] addr_wa, addr_ra,
 	output reg we_a, re_a, clk,
 	output reg [3:0] state,
-	input [9:0] q_a
+	input [11:0] q_a
 	);
 	
 	initial begin
@@ -20,26 +20,26 @@ module Probador(
         @(posedge clk);
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 1111111111;
+		data_a <= 111111111111;
 
 		@(posedge clk);
 		addr_wa <= addr_wa+1;
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 1010101010;
+		data_a <= 101010101010;
 		
 		@(posedge clk);
 		addr_wa <= addr_wa+1;
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 0101010101;
+		data_a <= 010101010101;
 
 
 		@(posedge clk);
 		addr_wa <= addr_wa+1;
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 1111100000;
+		data_a <= 111111000000;
 
 		@(posedge clk);
 		re_a <= 1;
@@ -64,19 +64,19 @@ module Probador(
 		addr_wa <= addr_wa+1;
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 0000000001;
+		data_a <= 000000000001;
 
 		@(posedge clk);
 		addr_wa <= addr_wa+1;
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 0000000010;
+		data_a <= 000000000010;
 
 		@(posedge clk);
 		addr_wa <= addr_wa+1;
 		we_a <= 1;
 		re_a <= 0;
-		data_a <= 0000000100;
+		data_a <= 000000000100;
 
 		$finish;
 	end
