@@ -6,8 +6,8 @@ module Probador_FIFO(
     output reg push,
     output reg pop,
     output reg [9:0] data_in,
-    output reg [2:0] umbral_superior,            
-    output reg [2:0] umbral_inferior,            
+    output reg [2:0] sup_Threshold,            
+    output reg [2:0] inf_Threshold,            
     input [9:0] data_out_conduct,
     input [9:0] data_out_estruct,
     input almost_full_conduct,
@@ -23,8 +23,8 @@ initial begin
         $dumpvars;
         push<=0;
         pop<=0;
-        umbral_inferior <= 3'b001;
-        umbral_superior <= 3'b110;
+        inf_Threshold <= 3'b001;
+        sup_Threshold <= 3'b110;
         state <= 4'b0001;
         @(posedge clk)
         @(posedge clk)

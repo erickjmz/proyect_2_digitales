@@ -1,5 +1,5 @@
 $date
-	Tue Nov  9 19:46:50 2021
+	Wed Nov 24 18:39:52 2021
 $end
 $version
 	Icarus Verilog
@@ -13,11 +13,11 @@ $var wire 1 " Y $end
 $upscope $end
 $scope module BancoPruebas_FIFO $end
 $var wire 1 # alm_empty $end
-$var wire 3 $ umbral_superior [2:0] $end
-$var wire 3 % umbral_inferior [2:0] $end
-$var wire 4 & state [3:0] $end
-$var wire 1 ' push $end
-$var wire 1 ( pop $end
+$var wire 3 $ sup_Threshold [2:0] $end
+$var wire 4 % state [3:0] $end
+$var wire 1 & push $end
+$var wire 1 ' pop $end
+$var wire 3 ( inf_Threshold [2:0] $end
 $var wire 1 ) empty_estruct $end
 $var wire 1 * empty_conduct $end
 $var wire 10 + data_out_estruct [9:0] $end
@@ -27,11 +27,11 @@ $var wire 1 . clk $end
 $var wire 1 / almost_full_estruct $end
 $var wire 1 0 almost_full_conduct $end
 $scope module conductual $end
-$var wire 3 1 um_sup [2:0] $end
-$var wire 3 2 um_inf [2:0] $end
-$var wire 4 3 state [3:0] $end
-$var wire 1 ' push $end
-$var wire 1 ( pop $end
+$var wire 3 1 sup_Threshold [2:0] $end
+$var wire 4 2 state [3:0] $end
+$var wire 1 & push $end
+$var wire 1 ' pop $end
+$var wire 3 3 inf_Threshold [2:0] $end
 $var wire 10 4 data_out [9:0] $end
 $var wire 10 5 data_in [9:0] $end
 $var wire 1 . clk $end
@@ -61,15 +61,15 @@ $scope module estructural $end
 $var wire 1 # alm_empty $end
 $var wire 3 D wr_ptr [2:0] $end
 $var wire 1 E we_a $end
-$var wire 3 F um_sup [2:0] $end
-$var wire 3 G um_inf [2:0] $end
-$var wire 4 H state [3:0] $end
-$var wire 1 I re_a $end
-$var wire 3 J rd_ptr [2:0] $end
-$var wire 1 ' push $end
-$var wire 1 ( pop $end
-$var wire 3 K much_space [2:0] $end
-$var wire 3 L low_space [2:0] $end
+$var wire 3 F sup_Threshold [2:0] $end
+$var wire 4 G state [3:0] $end
+$var wire 1 H re_a $end
+$var wire 3 I rd_ptr [2:0] $end
+$var wire 1 & push $end
+$var wire 1 ' pop $end
+$var wire 3 J much_space [2:0] $end
+$var wire 3 K low_space [2:0] $end
+$var wire 3 L inf_Threshold [2:0] $end
 $var wire 1 ) empty $end
 $var wire 10 M data_out [9:0] $end
 $var wire 10 N data_in [9:0] $end
@@ -287,7 +287,7 @@ $var wire 1 f Y $end
 $upscope $end
 $scope module _161_ $end
 $var wire 1 e Y $end
-$var wire 1 ' A $end
+$var wire 1 & A $end
 $upscope $end
 $scope module _162_ $end
 $var wire 1 5# A $end
@@ -446,7 +446,7 @@ $upscope $end
 $scope module _193_ $end
 $var wire 1 u" B $end
 $var wire 1 t" Y $end
-$var wire 1 ( A $end
+$var wire 1 ' A $end
 $upscope $end
 $scope module _194_ $end
 $var wire 1 t" A $end
@@ -455,7 +455,7 @@ $upscope $end
 $scope module _195_ $end
 $var wire 1 Z A $end
 $var wire 1 t" B $end
-$var wire 1 I Y $end
+$var wire 1 H Y $end
 $upscope $end
 $scope module _196_ $end
 $var wire 1 I# A $end
@@ -485,7 +485,7 @@ $upscope $end
 $scope module _201_ $end
 $var wire 1 o" B $end
 $var wire 1 m" Y $end
-$var wire 1 ' A $end
+$var wire 1 & A $end
 $upscope $end
 $scope module _202_ $end
 $var wire 1 Z A $end
@@ -558,7 +558,7 @@ $upscope $end
 $scope module _216_ $end
 $var wire 1 U# A $end
 $var wire 1 _" Y $end
-$var wire 1 ( B $end
+$var wire 1 ' B $end
 $upscope $end
 $scope module _217_ $end
 $var wire 1 u A $end
@@ -713,7 +713,7 @@ $upscope $end
 $scope module _247_ $end
 $var wire 1 q" B $end
 $var wire 1 D" Y $end
-$var wire 1 ( A $end
+$var wire 1 ' A $end
 $upscope $end
 $scope module _248_ $end
 $var wire 1 E" A $end
@@ -1086,7 +1086,7 @@ $upscope $end
 $scope module memory $end
 $var wire 3 :$ addr_ra [2:0] $end
 $var wire 3 ;$ addr_wa [2:0] $end
-$var wire 1 I re_a $end
+$var wire 1 H re_a $end
 $var wire 1 E we_a $end
 $var wire 4 <$ state [3:0] $end
 $var wire 10 =$ \ram[7] [9:0] $end
@@ -2991,7 +2991,7 @@ $var wire 1 P( B $end
 $var wire 1 a+ Y $end
 $upscope $end
 $scope module _0954_ $end
-$var wire 1 I A $end
+$var wire 1 H A $end
 $var wire 1 p) B $end
 $var wire 1 O( Y $end
 $upscope $end
@@ -5656,11 +5656,11 @@ $var wire 1 * empty_conduct $end
 $var wire 1 ) empty_estruct $end
 $var reg 1 . clk $end
 $var reg 10 =0 data_in [9:0] $end
-$var reg 1 ( pop $end
-$var reg 1 ' push $end
-$var reg 4 >0 state [3:0] $end
-$var reg 3 ?0 umbral_inferior [2:0] $end
-$var reg 3 @0 umbral_superior [2:0] $end
+$var reg 3 >0 inf_Threshold [2:0] $end
+$var reg 1 ' pop $end
+$var reg 1 & push $end
+$var reg 4 ?0 state [3:0] $end
+$var reg 3 @0 sup_Threshold [2:0] $end
 $upscope $end
 $upscope $end
 $scope module DFFSR $end
@@ -7076,11 +7076,11 @@ xP
 bx O
 bx N
 bx M
-bx L
+b1 L
 bx K
 bx J
-0I
-b1 H
+bx I
+0H
 b1 G
 b110 F
 0E
@@ -7112,9 +7112,9 @@ bx ,
 bx +
 x*
 x)
-0(
+b1 (
 0'
-b1 &
+0&
 b1 %
 b110 $
 0#
@@ -7834,7 +7834,7 @@ b0 ;$
 0}#
 0!$
 0#$
-b0 J
+b0 I
 b0 :$
 0%$
 0'$
@@ -7844,11 +7844,11 @@ b0 O
 0-$
 0/$
 01$
-b0 L
+b0 K
 03$
 05$
 07$
-b0 K
+b0 J
 09$
 05/
 06/
@@ -8109,12 +8109,12 @@ b1 B
 b1 N
 b1 F$
 b1 =0
-b10 &
-b10 3
+b10 %
+b10 2
 b10 A
-b10 H
+b10 G
 b10 <$
-b10 >0
+b10 ?0
 1.
 #80
 0.
@@ -8186,11 +8186,11 @@ b1 }"
 11#
 b1 :
 b110 9
-1'
+1&
 11$
-b110 L
+b110 K
 13$
-b1 K
+b1 J
 15$
 1.
 #120
@@ -9620,7 +9620,7 @@ b1 ~"
 0C"
 0?"
 0V"
-1I
+1H
 1Z"
 1P"
 1E"
@@ -9639,8 +9639,8 @@ b1 ~"
 0b,
 1P#
 0O#
-1(
-0'
+1'
+0&
 b1010 -
 b1010 5
 b1010 B
@@ -9829,7 +9829,7 @@ b1011 B
 b1011 N
 b1011 F$
 b1011 =0
-b1 J
+b1 I
 b1 :$
 1!$
 1'$
@@ -10002,7 +10002,7 @@ b10 <0
 b110 O
 0'$
 1#$
-b10 J
+b10 I
 b10 :$
 0!$
 b1100 -
@@ -10175,7 +10175,7 @@ b1101 B
 b1101 N
 b1101 F$
 b1101 =0
-b11 J
+b11 I
 b11 :$
 1!$
 1'$
@@ -10516,7 +10516,7 @@ b100 O
 0'$
 1%$
 0#$
-b100 J
+b100 I
 b100 :$
 0!$
 b1110 -
@@ -10693,7 +10693,7 @@ b1111 B
 b1111 N
 b1111 F$
 b1111 =0
-b101 J
+b101 I
 b101 :$
 1!$
 1'$
@@ -10868,7 +10868,7 @@ b110 <0
 b10 O
 0'$
 1#$
-b110 J
+b110 I
 b110 :$
 0!$
 b10000 -
@@ -11034,7 +11034,7 @@ b10001 B
 b10001 N
 b10001 F$
 b10001 =0
-b111 J
+b111 I
 b111 :$
 1!$
 1'$
@@ -11078,7 +11078,7 @@ b0 $#
 0Y#
 1j'
 1W"
-0I
+0H
 0Z"
 0P"
 0E"
@@ -11445,7 +11445,7 @@ b0 O
 0'$
 0%$
 0#$
-b0 J
+b0 I
 b0 :$
 0!$
 1)
@@ -11606,7 +11606,7 @@ b1 }"
 1w,
 1b,
 1O#
-1'
+1&
 b10111 -
 b10111 5
 b10111 B
@@ -11652,7 +11652,7 @@ b1 ~"
 1S"
 01"
 1##
-1I
+1H
 1P"
 1E"
 1@"
@@ -11871,7 +11871,7 @@ b0 k+
 1h'
 0:'
 0##
-0I
+0H
 0Z"
 0P"
 0E"
@@ -12129,7 +12129,7 @@ b11001 =0
 b10 D
 b10 ;$
 1{#
-b1 J
+b1 I
 b1 :$
 1!$
 b0 O
@@ -12177,7 +12177,7 @@ b10 ~"
 0z#
 0."
 1##
-1I
+1H
 1P"
 1E"
 1A"
@@ -12376,7 +12376,7 @@ b0 ;0
 0W/
 0c#
 0##
-0I
+0H
 0Z"
 0P"
 0E"
@@ -12673,7 +12673,7 @@ b100 D
 b100 ;$
 1}#
 0!$
-b10 J
+b10 I
 b10 :$
 1#$
 b0 O
@@ -12828,7 +12828,7 @@ b101 D
 b101 ;$
 1y#
 0)
-0(
+0'
 b11100 -
 b11100 5
 b11100 B

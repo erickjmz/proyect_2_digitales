@@ -2,7 +2,7 @@
 `include "MUX.v"
 `include "Contador.v"
 `include "arbitro.v"
-`include "MaquinaEstados.v"
+`include "StateMachine.v"
 
 module TransactionLayerPCIe_c(
     input clk,
@@ -10,7 +10,7 @@ module TransactionLayerPCIe_c(
     input [1:0] idx,
     input [9:0] data_in0, data_in1, data_in2, data_in3,
     input reset, init,
-    input [2:0] Umbral_bajo, Umbral_alto,
+    input [2:0] Low_Threshold, High_Threshold,
     input push_in0, push_in1, push_in2, push_in3,
     input pop_in0, pop_in1, pop_in2, pop_in3,
     output [9:0] data_out0, data_out1, data_out2, data_out3,
@@ -21,7 +21,7 @@ module TransactionLayerPCIe_c(
 wire pop_Ar0, pop_Ar1, pop_Ar2, pop_Ar3; 
 wire push_Ar0, push_Ar1, push_Ar2, push_Ar3;
 
-wire almost_full0, almost_full1, almost_full2, almost_full3;
+wire alm_full0, alm_full1, alm_full2, alm_full3;
 wire empty0, empty1, empty2, empty3, empty4, empty5, empty6, empty7;
 
 wire [9:0] inFIFO_out0, inFIFO_out1, inFIFO_out2, inFIFO_out3;
@@ -29,13 +29,13 @@ wire [9:0] outFIFO_in0, outFIFO_in1, outFIFO_in2, outFIFO_in3;
 
 /*AUTOWIRE*/
 // Beginning of automatic wires (for undeclared instantiated-module outputs)
-wire			almost_empty;		// From FIFO_in0 of FIFO.v, ...
-wire			almost_full;		// From FIFO_in0 of FIFO.v, ...
+wire			alm_empty;		// From FIFO_in0 of FIFO.v, ...
+wire			alm_full;		// From FIFO_in0 of FIFO.v, ...
 wire [7:0]		empties;		// From arbitreiro of arbitro.v
+wire [2:0]		inf_Threshold;		// From FSM of StateMachine.v
 wire			push;			// From arbitreiro of arbitro.v
-wire [3:0]		state;			// From FSM of MaquinaEstados.v
-wire [2:0]		umbral_inferior;	// From FSM of MaquinaEstados.v
-wire [2:0]		umbral_superior;	// From FSM of MaquinaEstados.v
+wire [3:0]		state;			// From FSM of StateMachine.v
+wire [2:0]		sup_Threshold;		// From FSM of StateMachine.v
 // End of automatics
 
 //------------------------------------- FIFOS de entrada -------------------------------//
@@ -47,13 +47,13 @@ FIFO FIFO_in0(
     .empty(empty0),
     /*AUTOINST*/
 	      // Outputs
-	      .almost_full		(almost_full),
-	      .almost_empty		(almost_empty),
+	      .alm_full			(alm_full),
+	      .alm_empty		(alm_empty),
 	      // Inputs
 	      .clk			(clk),
-	      .state			(state[3:0]),
-	      .umbral_superior		(umbral_superior[2:0]),
-	      .umbral_inferior		(umbral_inferior[2:0]));
+	      .sup_Threshold		(sup_Threshold[2:0]),
+	      .inf_Threshold		(inf_Threshold[2:0]),
+	      .state			(state[3:0]));
 FIFO FIFO_in1( 
     .push(push_in1),
     .pop(pop_Ar1),
@@ -62,13 +62,13 @@ FIFO FIFO_in1(
     .empty(empty1),
     /*AUTOINST*/
 	      // Outputs
-	      .almost_full		(almost_full),
-	      .almost_empty		(almost_empty),
+	      .alm_full			(alm_full),
+	      .alm_empty		(alm_empty),
 	      // Inputs
 	      .clk			(clk),
-	      .state			(state[3:0]),
-	      .umbral_superior		(umbral_superior[2:0]),
-	      .umbral_inferior		(umbral_inferior[2:0]));
+	      .sup_Threshold		(sup_Threshold[2:0]),
+	      .inf_Threshold		(inf_Threshold[2:0]),
+	      .state			(state[3:0]));
 FIFO FIFO_in2( 
     .push(push_in2),
     .pop(pop_Ar2),
@@ -77,13 +77,13 @@ FIFO FIFO_in2(
     .empty(empty2),
     /*AUTOINST*/
 	      // Outputs
-	      .almost_full		(almost_full),
-	      .almost_empty		(almost_empty),
+	      .alm_full			(alm_full),
+	      .alm_empty		(alm_empty),
 	      // Inputs
 	      .clk			(clk),
-	      .state			(state[3:0]),
-	      .umbral_superior		(umbral_superior[2:0]),
-	      .umbral_inferior		(umbral_inferior[2:0]));
+	      .sup_Threshold		(sup_Threshold[2:0]),
+	      .inf_Threshold		(inf_Threshold[2:0]),
+	      .state			(state[3:0]));
 FIFO FIFO_in3( 
     .push(push_in3),
     .pop(pop_Ar3),
@@ -92,13 +92,13 @@ FIFO FIFO_in3(
     .empty(empty3),
     /*AUTOINST*/
 	      // Outputs
-	      .almost_full		(almost_full),
-	      .almost_empty		(almost_empty),
+	      .alm_full			(alm_full),
+	      .alm_empty		(alm_empty),
 	      // Inputs
 	      .clk			(clk),
-	      .state			(state[3:0]),
-	      .umbral_superior		(umbral_superior[2:0]),
-	      .umbral_inferior		(umbral_inferior[2:0]));
+	      .sup_Threshold		(sup_Threshold[2:0]),
+	      .inf_Threshold		(inf_Threshold[2:0]),
+	      .state			(state[3:0]));
 
 
 //------------------------------------- FIFOS de salida -------------------------------//
@@ -108,61 +108,61 @@ FIFO FIFO_out0(
     .data_in(inFIFO_out0),
     .data_out(data_out0),
     .empty(empty4),
-    .almost_full		(almost_full0),
+    .alm_full		(alm_full0),
     /*AUTOINST*/
 	       // Outputs
-	       .almost_empty		(almost_empty),
+	       .alm_empty		(alm_empty),
 	       // Inputs
 	       .clk			(clk),
-	       .state			(state[3:0]),
 	       .push			(push),
-	       .umbral_superior		(umbral_superior[2:0]),
-	       .umbral_inferior		(umbral_inferior[2:0]));
+	       .sup_Threshold		(sup_Threshold[2:0]),
+	       .inf_Threshold		(inf_Threshold[2:0]),
+	       .state			(state[3:0]));
 FIFO FIFO_out1( 
     .pop(pop_in1),
     .data_in(inFIFO_out1),
     .data_out(data_out1),
     .empty(empty5),
-    .almost_full		(almost_full1),
+    .alm_full		(alm_full1),
     /*AUTOINST*/
 	       // Outputs
-	       .almost_empty		(almost_empty),
+	       .alm_empty		(alm_empty),
 	       // Inputs
 	       .clk			(clk),
-	       .state			(state[3:0]),
 	       .push			(push),
-	       .umbral_superior		(umbral_superior[2:0]),
-	       .umbral_inferior		(umbral_inferior[2:0]));
+	       .sup_Threshold		(sup_Threshold[2:0]),
+	       .inf_Threshold		(inf_Threshold[2:0]),
+	       .state			(state[3:0]));
 FIFO FIFO_out2( 
     .pop(pop_in2),
     .data_in(inFIFO_out2),
     .data_out(data_out2),
     .empty(empty6),
-    .almost_full		(almost_full2),
+    .alm_full		(alm_full2),
     /*AUTOINST*/
 	       // Outputs
-	       .almost_empty		(almost_empty),
+	       .alm_empty		(alm_empty),
 	       // Inputs
 	       .clk			(clk),
-	       .state			(state[3:0]),
 	       .push			(push),
-	       .umbral_superior		(umbral_superior[2:0]),
-	       .umbral_inferior		(umbral_inferior[2:0]));
+	       .sup_Threshold		(sup_Threshold[2:0]),
+	       .inf_Threshold		(inf_Threshold[2:0]),
+	       .state			(state[3:0]));
 FIFO FIFO_out3( 
     .pop(pop_in3),
     .data_in(inFIFO_out3),
     .data_out(data_out3),
     .empty(empty7),
-    .almost_full		(almost_full3),
+    .alm_full		(alm_full3),
     /*AUTOINST*/
 	       // Outputs
-	       .almost_empty		(almost_empty),
+	       .alm_empty		(alm_empty),
 	       // Inputs
 	       .clk			(clk),
-	       .state			(state[3:0]),
 	       .push			(push),
-	       .umbral_superior		(umbral_superior[2:0]),
-	       .umbral_inferior		(umbral_inferior[2:0]));
+	       .sup_Threshold		(sup_Threshold[2:0]),
+	       .inf_Threshold		(inf_Threshold[2:0]),
+	       .state			(state[3:0]));
 
 //------------------------------------- MUXES -------------------------------//
 
@@ -205,14 +205,14 @@ Contador Contadores(
 
 
 arbitro arbitreiro(
-    .empty0_naranja(empty0),
-    .empty1_naranja(empty1),
-    .empty2_naranja(empty2),
-    .empty3_naranja(empty3),
-    .empty0_morado(empty4),
-    .empty1_morado(empty5),
-    .empty2_morado(empty6),
-    .empty3_morado(empty7),
+    .empty0_orange(empty0),
+    .empty1_orange(empty1),
+    .empty2_orange(empty2),
+    .empty3_orange(empty3),
+    .empty0_purple(empty4),
+    .empty1_purple(empty5),
+    .empty2_purple(empty6),
+    .empty3_purple(empty7),
     .pop0(pop_Ar0),
     .pop1(pop_Ar1),
     .pop2(pop_Ar2),
@@ -233,19 +233,19 @@ arbitro arbitreiro(
 
 //------------------------------------- Maquina de estados  -------------------------------//
 
-MaquinaEstados FSM (
+StateMachine FSM (
     /*AUTOINST*/
-		    // Outputs
-		    .umbral_superior	(umbral_superior[2:0]),
-		    .umbral_inferior	(umbral_inferior[2:0]),
-		    .state		(state[3:0]),
-		    // Inputs
-		    .clk		(clk),
-		    .Umbral_alto	(Umbral_alto[2:0]),
-		    .Umbral_bajo	(Umbral_bajo[2:0]),
-		    .reset		(reset),
-		    .init		(init),
-		    .empties		(empties[7:0]));
+		  // Outputs
+		  .sup_Threshold	(sup_Threshold[2:0]),
+		  .inf_Threshold	(inf_Threshold[2:0]),
+		  .state		(state[3:0]),
+		  // Inputs
+		  .clk			(clk),
+		  .reset		(reset),
+		  .init			(init),
+		  .High_Threshold	(High_Threshold[2:0]),
+		  .Low_Threshold	(Low_Threshold[2:0]),
+		  .empties		(empties[7:0]));
 
 endmodule
 // Local Variable:

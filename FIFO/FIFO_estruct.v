@@ -2,7 +2,7 @@
 
 (* top =  1  *)
 (* src = "FIFO_estruct.v:3" *)
-module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, alm_full, alm_empty, empty);
+module FIFO_estruct(clk, push, pop, sup_Threshold, inf_Threshold, state, data_in, data_out, alm_full, alm_empty, empty);
   (* src = "FIFO_estruct.v:45" *)
   wire [3:0] _000_;
   (* src = "FIFO_estruct.v:45" *)
@@ -168,6 +168,8 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
   output [9:0] data_out;
   (* src = "FIFO_estruct.v:13" *)
   output empty;
+  (* src = "FIFO_estruct.v:8" *)
+  input [2:0] inf_Threshold;
   (* src = "FIFO_estruct.v:17" *)
   wire [2:0] low_space;
   (* src = "FIFO_estruct.v:17" *)
@@ -182,10 +184,8 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
   wire re_a;
   (* src = "FIFO_estruct.v:9" *)
   input [3:0] state;
-  (* src = "FIFO_estruct.v:8" *)
-  input [2:0] um_inf;
   (* src = "FIFO_estruct.v:7" *)
-  input [2:0] um_sup;
+  input [2:0] sup_Threshold;
   (* src = "FIFO_estruct.v:19" *)
   wire we_a;
   (* src = "FIFO_estruct.v:16" *)
@@ -858,7 +858,7 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
     .Y(_090_)
   );
   NOR _283_ (
-    .A(um_inf[0]),
+    .A(inf_Threshold[0]),
     .B(_088_),
     .Y(_091_)
   );
@@ -878,7 +878,7 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
     .Y(_093_)
   );
   NOR _287_ (
-    .A(um_inf[1]),
+    .A(inf_Threshold[1]),
     .B(_088_),
     .Y(_094_)
   );
@@ -898,7 +898,7 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
     .Y(_096_)
   );
   NOR _291_ (
-    .A(um_inf[2]),
+    .A(inf_Threshold[2]),
     .B(_088_),
     .Y(_097_)
   );
@@ -918,7 +918,7 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
     .Y(_099_)
   );
   NOR _295_ (
-    .A(um_sup[0]),
+    .A(sup_Threshold[0]),
     .B(_088_),
     .Y(_100_)
   );
@@ -938,7 +938,7 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
     .Y(_102_)
   );
   NOR _299_ (
-    .A(um_sup[1]),
+    .A(sup_Threshold[1]),
     .B(_088_),
     .Y(_103_)
   );
@@ -958,7 +958,7 @@ module FIFO_estruct(clk, push, pop, um_sup, um_inf, state, data_in, data_out, al
     .Y(_105_)
   );
   NOR _303_ (
-    .A(um_sup[2]),
+    .A(sup_Threshold[2]),
     .B(_088_),
     .Y(_106_)
   );

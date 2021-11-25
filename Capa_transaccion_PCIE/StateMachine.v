@@ -1,10 +1,10 @@
-module MaquinaEstados (
+module StateMachine (
     input clk,
-    input [2:0] Umbral_alto, Umbral_bajo,
     input reset,
     input init,
+    input [2:0] High_Threshold, Low_Threshold,
     input [7:0] empties,
-    output reg [2:0] umbral_superior, umbral_inferior,
+    output reg [2:0] sup_Threshold, inf_Threshold,
     output reg [3:0] state
 );
 reg [3:0] ProximoEstado, Estado;
@@ -17,14 +17,14 @@ parameter [3:0] ACTIVE = 4'b1000;
 always@(posedge clk)begin
     if (reset)begin
         Estado <= RESET;
-        umbral_superior<=0;
-        umbral_inferior<=0;
+        sup_Threshold<=0;
+        inf_Threshold<=0;
     end
     else begin
         if (init)begin
             Estado <= INIT;
-            umbral_superior <= Umbral_alto;
-            umbral_inferior <= Umbral_bajo;
+            sup_Threshold <= High_Threshold;
+            inf_Threshold <= Low_Threshold;
         end
         else begin
             Estado <= ProximoEstado;
@@ -42,19 +42,15 @@ always@(*)begin
     state = Estado;
     ProximoEstado = Estado;
     case(Estado)
-
-        //      *** RESET ***       //
+        
         RESET: begin
             ProximoEstado = INIT;
         end
-
-
-        //      *** INIT ***       //
+        
         INIT: begin
             ProximoEstado = IDLE;
         end
-
-        //      *** IDLE ***       //
+        
         IDLE: begin
             if(empties != 8'hFF)begin
                 ProximoEstado = ACTIVE;
@@ -63,8 +59,7 @@ always@(*)begin
                 ProximoEstado = IDLE;
             end
         end
-
-        //      *** ACTIVE ***       //
+        
         ACTIVE: begin
             if(empties != 8'hFF)begin
                 ProximoEstado = ACTIVE;

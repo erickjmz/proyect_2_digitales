@@ -18,8 +18,8 @@ module BancoPruebas_FIFO; // Testbench
     wire		pop;			// From prob of Probador_FIFO.v
     wire		push;			// From prob of Probador_FIFO.v
     wire [3:0]		state;			// From prob of Probador_FIFO.v
-    wire [2:0]		umbral_inferior;	// From prob of Probador_FIFO.v
-    wire [2:0]		umbral_superior;	// From prob of Probador_FIFO.v
+    wire [2:0]		inf_Threshold;	// From prob of Probador_FIFO.v
+    wire [2:0]		sup_Threshold;	// From prob of Probador_FIFO.v
     // End of automatics
 
 
@@ -35,8 +35,8 @@ module BancoPruebas_FIFO; // Testbench
 		     .clk		(clk),
 		     .push		(push),
 		     .pop		(pop),
-		     .um_sup		(umbral_superior[2:0]),
-		     .um_inf		(umbral_inferior[2:0]),
+		     .sup_Threshold		(sup_Threshold[2:0]),
+		     .inf_Threshold		(inf_Threshold[2:0]),
 		     .state		(state[3:0]),
 		     .data_in		(data_in[9:0]));
 
@@ -54,8 +54,8 @@ module BancoPruebas_FIFO; // Testbench
 			    .push		(push),
 			    .pop		(pop),
 			    .data_in		(data_in[9:0]),
-			    .umbral_superior	(umbral_superior[2:0]),
-			    .umbral_inferior	(umbral_inferior[2:0]));
+			    .sup_Threshold	(sup_Threshold[2:0]),
+			    .inf_Threshold	(inf_Threshold[2:0]));
 
     FIFO_estruct estructural (
             .data_out(data_out_estruct),
@@ -70,8 +70,8 @@ module BancoPruebas_FIFO; // Testbench
 			      .pop		(pop),
 			      .push		(push),
 			      .state		(state[3:0]),
-			      .um_inf		(umbral_inferior[2:0]),
-			      .um_sup		(umbral_superior[2:0]));
+			      .inf_Threshold		(inf_Threshold[2:0]),
+			      .sup_Threshold		(sup_Threshold[2:0]));
     
 endmodule
 // Local Variable:

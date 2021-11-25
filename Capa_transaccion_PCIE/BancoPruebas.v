@@ -17,8 +17,8 @@ module BancoPruebas(/*AUTOARG*/); // Testbench
     wire	[4:0]	contador_e;		// From estructural of TransactionLayerPCIe_e.v		// From estructural of TransactionLayerPCIe_e.v
     /*AUTOWIRE*/
     // Beginning of automatic wires (for undeclared instantiated-module outputs)
-    wire [2:0]		Umbral_alto;		// From testbench of Probador.v
-    wire [2:0]		Umbral_bajo;		// From testbench of Probador.v
+    wire [2:0]		High_Threshold;		// From testbench of Probador.v
+    wire [2:0]		Low_Threshold;		// From testbench of Probador.v
     wire		clk;			// From testbench of Probador.v
     wire [9:0]		data_in0;		// From testbench of Probador.v
     wire [9:0]		data_in1;		// From testbench of Probador.v
@@ -59,8 +59,8 @@ module BancoPruebas(/*AUTOARG*/); // Testbench
 				       .data_in3	(data_in3[9:0]),
 				       .reset		(reset),
 				       .init		(init),
-				       .Umbral_bajo	(Umbral_bajo[2:0]),
-				       .Umbral_alto	(Umbral_alto[2:0]),
+				       .Low_Threshold	(Low_Threshold[2:0]),
+				       .High_Threshold	(High_Threshold[2:0]),
 				       .push_in0	(push_in0),
 				       .push_in1	(push_in1),
 				       .push_in2	(push_in2),
@@ -82,8 +82,8 @@ module BancoPruebas(/*AUTOARG*/); // Testbench
 			    .data_in3		(data_in3[9:0]),
 			    .reset		(reset),
 			    .init		(init),
-			    .Umbral_bajo	(Umbral_bajo[2:0]),
-			    .Umbral_alto	(Umbral_alto[2:0]),
+			    .Low_Threshold	(Low_Threshold[2:0]),
+			    .High_Threshold	(High_Threshold[2:0]),
 			    .push_in0		(push_in0),
 			    .push_in1		(push_in1),
 			    .push_in2		(push_in2),
@@ -125,8 +125,8 @@ module BancoPruebas(/*AUTOARG*/); // Testbench
 					.data_in3	(data_in3[9:0]),
 					.reset		(reset),
 					.init		(init),
-					.Umbral_bajo	(Umbral_bajo[2:0]),
-					.Umbral_alto	(Umbral_alto[2:0]),
+					.Low_Threshold	(Low_Threshold[2:0]),
+					.High_Threshold	(High_Threshold[2:0]),
 					.push_in0	(push_in0),
 					.push_in1	(push_in1),
 					.push_in2	(push_in2),

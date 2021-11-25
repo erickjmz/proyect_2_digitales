@@ -4,7 +4,7 @@ module Probador(
     output reg [1:0] idx,
     output reg [9:0] data_in0, data_in1, data_in2, data_in3,
     output reg reset, init,
-    output reg [2:0] Umbral_bajo, Umbral_alto,
+    output reg [2:0] Low_Threshold, High_Threshold,
     output reg push_in0, push_in1, push_in2, push_in3,
     output reg pop_in0, pop_in1, pop_in2, pop_in3,
 
@@ -31,8 +31,8 @@ initial begin
     data_in3 <= 10'b0000000000;
     reset <= 1;
     init <= 0;
-    Umbral_bajo <= 3'b000;
-    Umbral_alto <= 3'b000;
+    Low_Threshold <= 3'b000;
+    High_Threshold <= 3'b000;
     push_in0 <= 0;
     push_in1 <= 0;
     push_in2 <= 0;
@@ -55,11 +55,11 @@ initial begin
     // 2. Modifique 2 veces los umbrales altos y bajos de los FIFOs (son el mismo umbral bajo
     // y alto para todos). Libere la señal init.
 
-    Umbral_bajo <= 3'b000;
-    Umbral_alto <= 3'b111;
+    Low_Threshold <= 3'b000;
+    High_Threshold <= 3'b111;
     @(posedge clk);
-    Umbral_bajo <= 3'b001;
-    Umbral_alto <= 3'b110;
+    Low_Threshold <= 3'b001;
+    High_Threshold <= 3'b110;
     @(posedge clk);
     reset <= 0;
     init <= 0;

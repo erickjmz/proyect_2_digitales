@@ -4,8 +4,8 @@ module FIFO (
     input clk,                      
     input push,
     input pop,
-    input [2:0] um_sup,            
-    input [2:0] um_inf,
+    input [2:0] sup_Threshold,            
+    input [2:0] inf_Threshold,
     input [3:0] state, 
     input [9:0] data_in,          
     output [9:0] data_out,
@@ -37,8 +37,8 @@ always@(posedge clk)begin
         much_space <= 0;
     end  
     if(state == 4'b0010)begin
-        low_space <= um_sup;
-        much_space <= um_inf;
+        low_space <= sup_Threshold;
+        much_space <= inf_Threshold;
     end
 end
 
