@@ -3,7 +3,7 @@ module StateMachine (
     input reset,
     input init,
     input [2:0] High_Threshold, Low_Threshold,
-    input [7:0] empties,
+    input [9:0] empties,
     output reg [2:0] sup_Threshold, inf_Threshold,
     output reg [3:0] state
 );

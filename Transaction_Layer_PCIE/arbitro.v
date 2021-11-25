@@ -18,7 +18,7 @@ module arbitro(
     output reg pop1,
     output reg pop2,
     output reg pop3,
-    output reg [7:0] empties
+    output reg [9:0] empties
 );
 
 always@(posedge clk)begin
