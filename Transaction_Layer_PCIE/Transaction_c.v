@@ -18,7 +18,7 @@ module Transaction_c(
     input pop_in0, pop_in1, pop_in2, pop_in3, pop_in4,
     output [11:0] data_out0, data_out1, data_out2, data_out3,
     output [4:0] contador,
-    output valid, valid_0, valid_1, valid_2, valid_3
+    output valid, valid_0, valid_1, valid_2, valid_3, valid_4, valid_5, valid_6, valid_7
 );
 
 wire pop_wire0, pop_wire1, pop_wire2, pop_wire3;  
@@ -30,10 +30,13 @@ wire [9:0]	empties;
 wire [3:0]	state;			
 wire [2:0]	umbral_inferior, umbral_superior;
 wire [11:0] outMUX;
+wire [11:0] outDEMUXA0, outDEMUXA1, outDEMUXA2, outDEMUXA3;
+wire [11:0] outDEMUXB0, outDEMUXB1, outDEMUXB2, outDEMUXB3;
 
 
 
-//------------------------------------- FIFOS de entrada -------------------------------//
+// FIFOS de entrada //
+
 FIFO FIFO_in0( 
     .push				(push_in0),
     .pop				(pop_wire0),
@@ -104,7 +107,9 @@ FIFO FIFO_in3(
 
 
 
-//------------------------------------- FIFOS de salida -------------------------------//
+
+
+// FIFOS de salida //
 
 FIFO FIFO_out0( 
     .pop				(pop_in0),
@@ -176,7 +181,9 @@ FIFO FIFO_out3(
 
 
 
-//------------------------------------- MUX -------------------------------//
+
+
+// MUX //
 
 mux MUX(
     .reset_L			(reset),
@@ -185,31 +192,56 @@ mux MUX(
 	.data_in1 			(outFIFO_in1),
 	.data_in2 			(outFIFO_in2),
 	.data_in3 			(outFIFO_in3),
-	.data_out			(outMUX),
+	.data_out			(outMUX)
 );
 
 
 
-//------------------------------------- DEMUX -------------------------------//
 
-demux DEMUX(
+
+// DEMUX 1 //
+
+demux DEMUX1(
     .reset_L		(reset),
     .clk			(clk),
-    .data_in 		(),
-	.class 			(),
-	.data_out0 		(),
-	.data_out1 		(),
-	.data_out2 		(),
-	.data_out3		(),
-	.valid_0 		(),
-	.valid_1 		(),
-	.valid_2 		(),
-	.valid_3 		(),
+    .data_in 		(data_in0),
+	.class 			(class),
+	.data_out0 		(outDEMUXA0),
+	.data_out1 		(outDEMUXA1),
+	.data_out2 		(outDEMUXA2),
+	.data_out3		(outDEMUXA3),
+	.valid_0 		(valid_0),
+	.valid_1 		(valid_1),
+	.valid_2 		(valid_2),
+	.valid_3 		(valid_3)
 );
 
 
 
-//------------------------------------- Contadores -------------------------------//
+
+
+// DEMUX 2 //
+
+demux DEMUX2(
+    .reset_L		(reset),
+    .clk			(clk),
+    .data_in 		(data_in1),
+	.class 			(class),
+	.data_out0 		(outDEMUXB0),
+	.data_out1 		(outDEMUXB1),
+	.data_out2 		(outDEMUXB2),
+	.data_out3		(outDEMUXB3),
+	.valid_0 		(valid_4),
+	.valid_1 		(valid_5),
+	.valid_2 		(valid_6),
+	.valid_3 		(valid_7)
+);
+
+
+
+
+
+// Contadores //
 
 contadores Contadores(
     .pop_0				(pop_in0),
@@ -231,7 +263,8 @@ contadores Contadores(
 
 
 
-//------------------------------------- Arbitro ------------------------------------------//
+
+// Arbitro //
 
 arbitro arbitro(
     .empty0_orange			(empty0),
@@ -261,7 +294,9 @@ arbitro arbitro(
 
 
 
-//------------------------------------- Maquina de estados  -------------------------------//
+
+
+// Maquina de estados //
 
 StateMachine FSM (
     /*AUTOINST*/

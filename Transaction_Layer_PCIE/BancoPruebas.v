@@ -9,7 +9,7 @@ module BancoPruebas;
 	wire [4:0]		contador_c, contador_e;	
     wire [2:0]		Umbral_alto, Umbral_bajo, idx;
 	wire [1:0]  	class;	
-	wire			clk, idle, init, req, reset, valid_c, valid_e, valid_0, valid_1, valid_2, valid_3;					
+	wire			clk, idle, init, req, reset, valid_c, valid_e, valid_0, valid_1, valid_2, valid_3, valid_4, valid_5, valid_6, valid_7;					
     wire			pop_in0, pop_in1, pop_in2, pop_in3, push_in0, push_in1, push_in2, push_in3;			
 
     Transaction_c TL_conductual (/*AUTOINST*/
@@ -88,7 +88,11 @@ module BancoPruebas;
 			.valid_0		(valid_0),
 			.valid_1		(valid_1),
 			.valid_2		(valid_2),
-			.valid_3		(valid_3)
+			.valid_3		(valid_3),
+			.valid_4		(valid_4),
+			.valid_5		(valid_5),
+			.valid_6		(valid_6),
+			.valid_7		(valid_7)
 	);
 
     //TransactionLayerPCIe_e estructural (/*AUTOINST*/

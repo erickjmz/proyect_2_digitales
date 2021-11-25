@@ -9,7 +9,7 @@ module Probador(
     output reg [2:0] Umbral_bajo, Umbral_alto,
     output reg push_in0, push_in1, push_in2, push_in3,
     output reg pop_in0, pop_in1, pop_in2, pop_in3, pop_in4,
-    input valid_0, valid_1, valid_2, valid_3,
+    input valid_0, valid_1, valid_2, valid_3, valid_4, valid_5, valid_6, valid_7,
     input [11:0] data_out0_c, data_out1_c, data_out2_c, data_out3_c,
     input [11:0] data_out0_e, data_out1_e, data_out2_e, data_out3_e,
     input [4:0] contador_c, contador_e,
