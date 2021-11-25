@@ -18,31 +18,25 @@ module Transaction_c(
     input pop_in0, pop_in1, pop_in2, pop_in3, pop_in4,
     output [11:0] data_out0, data_out1, data_out2, data_out3,
     output [4:0] contador,
-    output valid, valid_0, valid_1, valid_2, valid_3);
+    output valid, valid_0, valid_1, valid_2, valid_3
+);
 
-wire pop_Ar0, pop_Ar1, pop_Ar2, pop_Ar3; 
-wire push_Ar0, push_Ar1, push_Ar2, push_Ar3;
-
+wire pop_wire0, pop_wire1, pop_wire2, pop_wire3;  
 wire almost_full0, almost_full1, almost_full2, almost_full3;
-wire empty0, empty1, empty2, empty3, empty4, empty5, empty6, empty7;
-
+wire empty0, empty1, empty2, empty3, empty4, empty5, empty6, empty7, almost_empty, almost_full, push;
 wire [11:0] inFIFO_out0, inFIFO_out1, inFIFO_out2, inFIFO_out3;
 wire [11:0] outFIFO_in0, outFIFO_in1, outFIFO_in2, outFIFO_in3;
-
-wire			almost_empty;		
-wire			almost_full;		
-wire [9:0]		empties;		
-wire			push;			
-wire [3:0]		state;			
-wire [2:0]		umbral_inferior;	
-wire [2:0]		umbral_superior;	
+wire [9:0]	empties;				
+wire [3:0]	state;			
+wire [2:0]	umbral_inferior, umbral_superior;
+wire [11:0] outMUX;
 
 
 
 //------------------------------------- FIFOS de entrada -------------------------------//
 FIFO FIFO_in0( 
     .push				(push_in0),
-    .pop				(pop_Ar0),
+    .pop				(pop_wire0),
     .data_in			(data_in0),
     .data_out			(outFIFO_in0),
     .empty				(empty0),
@@ -59,7 +53,7 @@ FIFO FIFO_in0(
 
 FIFO FIFO_in1( 
     .push				(push_in1),
-    .pop				(pop_Ar1),
+    .pop				(pop_wire1),
     .data_in			(data_in1),
     .data_out			(outFIFO_in1),
     .empty				(empty1),
@@ -76,7 +70,7 @@ FIFO FIFO_in1(
 
 FIFO FIFO_in2( 
     .push				(push_in2),
-    .pop				(pop_Ar2),
+    .pop				(pop_wire2),
     .data_in			(data_in2),
     .data_out			(outFIFO_in2),
     .empty				(empty2),
@@ -93,7 +87,7 @@ FIFO FIFO_in2(
 
 FIFO FIFO_in3( 
     .push				(push_in3),
-    .pop				(pop_Ar3),
+    .pop				(pop_wire3),
     .data_in			(data_in3),
     .data_out			(outFIFO_in3),
     .empty				(empty3),
@@ -185,13 +179,13 @@ FIFO FIFO_out3(
 //------------------------------------- MUX -------------------------------//
 
 mux MUX(
-    .reset_L		(reset),
-    .clk			(clk),
-    .data_in0 		(),
-	.data_in1 		(),
-	.data_in2 		(),
-	.data_in3 		(),
-	.data_out		(),
+    .reset_L			(reset),
+    .clk				(clk),
+    .data_in0 			(outFIFO_in0),
+	.data_in1 			(outFIFO_in1),
+	.data_in2 			(outFIFO_in2),
+	.data_in3 			(outFIFO_in3),
+	.data_out			(outMUX),
 );
 
 
@@ -248,10 +242,10 @@ arbitro arbitro(
     .empty1_purple			(empty5),
     .empty2_purple			(empty6),
     .empty3_purple			(empty7),
-    .pop0					(pop_Ar0),
-    .pop1					(pop_Ar1),
-    .pop2					(pop_Ar2),
-    .pop3					(pop_Ar3),
+    .pop0					(pop_wire0),
+    .pop1					(pop_wire1),
+    .pop2					(pop_wire2),
+    .pop3					(pop_wire3),
     /*AUTOINST*/
 	// Outputs
 	.push					(push),
@@ -281,7 +275,8 @@ StateMachine FSM (
 	.Low_Threshold			(Umbral_bajo[2:0]),
 	.reset					(reset),
 	.init					(init),
-	.empties				(empties[9:0]));
+	.empties				(empties[9:0])
+);
 
 endmodule
 
