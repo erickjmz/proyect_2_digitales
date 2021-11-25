@@ -1,21 +1,21 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Thu Nov 25 06:36:20 2021
+[*] Thu Nov 25 06:45:05 2021
 [*]
 [dumpfile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/DeMux/demux.vcd"
-[dumpfile_mtime] "Thu Nov 25 06:35:59 2021"
-[dumpfile_size] 13051
+[dumpfile_mtime] "Thu Nov 25 06:44:14 2021"
+[dumpfile_size] 13067
 [savefile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/DeMux/demux.gtkw"
 [timestart] 0
 [size] 1000 600
 [pos] -1 -1
-*-43.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-43.000000 17000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] Banco_pruebas.
 [sst_width] 233
 [signals_width] 150
 [sst_expanded] 1
 [sst_vpaned_height] 144
-@201
+@200
 -Estructural
 @28
 Banco_pruebas.demux_Estructural.clk
@@ -27,10 +27,10 @@ Banco_pruebas.demux_Estructural.data_out1[11:0]
 Banco_pruebas.demux_Estructural.data_out2[11:0]
 Banco_pruebas.demux_Estructural.data_out3[11:0]
 @28
-Banco_pruebas.demux_Estructural.push_0
-Banco_pruebas.demux_Estructural.push_1
-Banco_pruebas.demux_Estructural.push_2
-Banco_pruebas.demux_Estructural.push_3
+Banco_pruebas.demux_Estructural.valid_0
+Banco_pruebas.demux_Estructural.valid_1
+Banco_pruebas.demux_Estructural.valid_2
+Banco_pruebas.demux_Estructural.valid_3
 @200
 -Conductual
 @28
@@ -43,10 +43,12 @@ Banco_pruebas.demux_cond.data_out1[11:0]
 Banco_pruebas.demux_cond.data_out2[11:0]
 Banco_pruebas.demux_cond.data_out3[11:0]
 @28
-Banco_pruebas.demux_cond.push_0
-Banco_pruebas.demux_cond.push_1
-Banco_pruebas.demux_cond.push_2
-Banco_pruebas.demux_cond.push_3
+Banco_pruebas.demux_cond.valid_0
+Banco_pruebas.demux_cond.valid_1
+Banco_pruebas.demux_cond.valid_2
+@29
+Banco_pruebas.demux_cond.valid_3
+@28
 Banco_pruebas.demux_cond.reset_L
 [pattern_trace] 1
 [pattern_trace] 0

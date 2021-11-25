@@ -4,7 +4,7 @@ module Probador(
 	output  reg [11:0] data_in,
 	output  reg [1:0] class,
 	input wire [11:0] data_out0, data_out1, data_out2, data_out3,
-	input wire push_0, push_1, push_2, push_3
+	input wire valid_0, valid_1, valid_2, valid_3
 	);
 
 	initial begin

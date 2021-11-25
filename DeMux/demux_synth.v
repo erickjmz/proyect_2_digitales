@@ -2,7 +2,7 @@
 
 (* top =  1  *)
 (* src = "demux_synth.v:2.1-66.10" *)
-module demux_synth(reset_L, clk, data_in, \class , data_out0, data_out1, data_out2, data_out3, push_0, push_1, push_2, push_3);
+module demux_synth(reset_L, clk, data_in, \class , data_out0, data_out1, data_out2, data_out3, valid_0, valid_1, valid_2, valid_3);
   (* src = "demux_synth.v:12.2-65.5" *)
   wire [11:0] _000_;
   (* src = "demux_synth.v:12.2-65.5" *)
@@ -69,20 +69,20 @@ module demux_synth(reset_L, clk, data_in, \class , data_out0, data_out1, data_ou
   (* src = "demux_synth.v:8.53-8.62" *)
   output [11:0] data_out3;
   reg [11:0] data_out3;
-  (* src = "demux_synth.v:9.13-9.19" *)
-  output push_0;
-  reg push_0;
-  (* src = "demux_synth.v:9.21-9.27" *)
-  output push_1;
-  reg push_1;
-  (* src = "demux_synth.v:9.29-9.35" *)
-  output push_2;
-  reg push_2;
-  (* src = "demux_synth.v:9.37-9.43" *)
-  output push_3;
-  reg push_3;
   (* src = "demux_synth.v:4.13-4.20" *)
   input reset_L;
+  (* src = "demux_synth.v:9.13-9.20" *)
+  output valid_0;
+  reg valid_0;
+  (* src = "demux_synth.v:9.22-9.29" *)
+  output valid_1;
+  reg valid_1;
+  (* src = "demux_synth.v:9.31-9.38" *)
+  output valid_2;
+  reg valid_2;
+  (* src = "demux_synth.v:9.40-9.47" *)
+  output valid_3;
+  reg valid_3;
   NOT _040_ (
     .A(\class [1]),
     .Y(_023_)
@@ -620,14 +620,14 @@ module demux_synth(reset_L, clk, data_in, \class , data_out0, data_out1, data_ou
     if (!1'h0) data_out3[11] = _003_[11];
   (* src = "demux_synth.v:12.2-65.5" *)
   always @*
-    if (!1'h0) push_0 = _004_;
+    if (!1'h0) valid_0 = _004_;
   (* src = "demux_synth.v:12.2-65.5" *)
   always @*
-    if (!1'h0) push_1 = _005_;
+    if (!1'h0) valid_1 = _005_;
   (* src = "demux_synth.v:12.2-65.5" *)
   always @*
-    if (!1'h0) push_2 = _006_;
+    if (!1'h0) valid_2 = _006_;
   (* src = "demux_synth.v:12.2-65.5" *)
   always @*
-    if (!1'h0) push_3 = _007_;
+    if (!1'h0) valid_3 = _007_;
 endmodule

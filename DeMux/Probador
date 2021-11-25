@@ -6,7 +6,7 @@
 :vpi_module "vhdl_sys";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x562ef2a3c210 .scope module, "Probador" "Probador" 2 1;
+S_0x556338051210 .scope module, "Probador" "Probador" 2 1;
  .timescale 0 0;
     .port_info 0 /OUTPUT 1 "reset_L"
     .port_info 1 /OUTPUT 1 "clk"
@@ -16,87 +16,87 @@ S_0x562ef2a3c210 .scope module, "Probador" "Probador" 2 1;
     .port_info 5 /INPUT 12 "data_out1"
     .port_info 6 /INPUT 12 "data_out2"
     .port_info 7 /INPUT 12 "data_out3"
-    .port_info 8 /INPUT 1 "push_0"
-    .port_info 9 /INPUT 1 "push_1"
-    .port_info 10 /INPUT 1 "push_2"
-    .port_info 11 /INPUT 1 "push_3"
-v0x562ef2a39db0_0 .var "class", 1 0;
-v0x562ef2a3a1e0_0 .var "clk", 0 0;
-v0x562ef2a3a5f0_0 .var "data_in", 11 0;
-o0x7fc5bbc630a8 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
-v0x562ef2a3aa40_0 .net "data_out0", 11 0, o0x7fc5bbc630a8;  0 drivers
-o0x7fc5bbc630d8 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
-v0x562ef2a3ae70_0 .net "data_out1", 11 0, o0x7fc5bbc630d8;  0 drivers
-o0x7fc5bbc63108 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
-v0x562ef2a3b040_0 .net "data_out2", 11 0, o0x7fc5bbc63108;  0 drivers
-o0x7fc5bbc63138 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
-v0x562ef2a3b4b0_0 .net "data_out3", 11 0, o0x7fc5bbc63138;  0 drivers
-o0x7fc5bbc63168 .functor BUFZ 1, C4<z>; HiZ drive
-v0x562ef2a70d30_0 .net "push_0", 0 0, o0x7fc5bbc63168;  0 drivers
-o0x7fc5bbc63198 .functor BUFZ 1, C4<z>; HiZ drive
-v0x562ef2a70df0_0 .net "push_1", 0 0, o0x7fc5bbc63198;  0 drivers
-o0x7fc5bbc631c8 .functor BUFZ 1, C4<z>; HiZ drive
-v0x562ef2a70eb0_0 .net "push_2", 0 0, o0x7fc5bbc631c8;  0 drivers
-o0x7fc5bbc631f8 .functor BUFZ 1, C4<z>; HiZ drive
-v0x562ef2a70f70_0 .net "push_3", 0 0, o0x7fc5bbc631f8;  0 drivers
-v0x562ef2a71030_0 .var "reset_L", 0 0;
-E_0x562ef2a5d930 .event posedge, v0x562ef2a3a1e0_0;
-    .scope S_0x562ef2a3c210;
+    .port_info 8 /INPUT 1 "valid_0"
+    .port_info 9 /INPUT 1 "valid_1"
+    .port_info 10 /INPUT 1 "valid_2"
+    .port_info 11 /INPUT 1 "valid_3"
+v0x55633804edb0_0 .var "class", 1 0;
+v0x55633804f1e0_0 .var "clk", 0 0;
+v0x55633804f5f0_0 .var "data_in", 11 0;
+o0x7f41904930a8 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
+v0x55633804fa40_0 .net "data_out0", 11 0, o0x7f41904930a8;  0 drivers
+o0x7f41904930d8 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
+v0x55633804fe70_0 .net "data_out1", 11 0, o0x7f41904930d8;  0 drivers
+o0x7f4190493108 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
+v0x556338050040_0 .net "data_out2", 11 0, o0x7f4190493108;  0 drivers
+o0x7f4190493138 .functor BUFZ 12, C4<zzzzzzzzzzzz>; HiZ drive
+v0x5563380504b0_0 .net "data_out3", 11 0, o0x7f4190493138;  0 drivers
+v0x556338085d30_0 .var "reset_L", 0 0;
+o0x7f4190493198 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556338085df0_0 .net "valid_0", 0 0, o0x7f4190493198;  0 drivers
+o0x7f41904931c8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556338085eb0_0 .net "valid_1", 0 0, o0x7f41904931c8;  0 drivers
+o0x7f41904931f8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556338085f70_0 .net "valid_2", 0 0, o0x7f41904931f8;  0 drivers
+o0x7f4190493228 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556338086030_0 .net "valid_3", 0 0, o0x7f4190493228;  0 drivers
+E_0x556338072730 .event posedge, v0x55633804f1e0_0;
+    .scope S_0x556338051210;
 T_0 ;
     %vpi_call 2 11 "$dumpfile", "demux.vcd" {0 0 0};
     %vpi_call 2 12 "$dumpvars" {0 0 0};
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x562ef2a71030_0, 0, 1;
+    %store/vec4 v0x556338085d30_0, 0, 1;
     %pushi/vec4 0, 0, 2;
-    %store/vec4 v0x562ef2a39db0_0, 0, 2;
+    %store/vec4 v0x55633804edb0_0, 0, 2;
     %pushi/vec4 0, 0, 12;
-    %store/vec4 v0x562ef2a3a5f0_0, 0, 12;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x55633804f5f0_0, 0, 12;
+    %wait E_0x556338072730;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v0x562ef2a71030_0, 0, 1;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x556338085d30_0, 0, 1;
+    %wait E_0x556338072730;
     %pushi/vec4 1, 0, 12;
-    %store/vec4 v0x562ef2a3a5f0_0, 0, 12;
+    %store/vec4 v0x55633804f5f0_0, 0, 12;
     %pushi/vec4 0, 0, 2;
-    %store/vec4 v0x562ef2a39db0_0, 0, 2;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x55633804edb0_0, 0, 2;
+    %wait E_0x556338072730;
     %pushi/vec4 2, 0, 12;
-    %store/vec4 v0x562ef2a3a5f0_0, 0, 12;
+    %store/vec4 v0x55633804f5f0_0, 0, 12;
     %pushi/vec4 1, 0, 2;
-    %store/vec4 v0x562ef2a39db0_0, 0, 2;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x55633804edb0_0, 0, 2;
+    %wait E_0x556338072730;
     %pushi/vec4 3, 0, 12;
-    %store/vec4 v0x562ef2a3a5f0_0, 0, 12;
+    %store/vec4 v0x55633804f5f0_0, 0, 12;
     %pushi/vec4 2, 0, 2;
-    %store/vec4 v0x562ef2a39db0_0, 0, 2;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x55633804edb0_0, 0, 2;
+    %wait E_0x556338072730;
     %pushi/vec4 4, 0, 12;
-    %store/vec4 v0x562ef2a3a5f0_0, 0, 12;
+    %store/vec4 v0x55633804f5f0_0, 0, 12;
     %pushi/vec4 3, 0, 2;
-    %store/vec4 v0x562ef2a39db0_0, 0, 2;
-    %wait E_0x562ef2a5d930;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x55633804edb0_0, 0, 2;
+    %wait E_0x556338072730;
+    %wait E_0x556338072730;
     %pushi/vec4 1, 0, 12;
-    %store/vec4 v0x562ef2a3a5f0_0, 0, 12;
+    %store/vec4 v0x55633804f5f0_0, 0, 12;
     %pushi/vec4 0, 0, 2;
-    %store/vec4 v0x562ef2a39db0_0, 0, 2;
-    %wait E_0x562ef2a5d930;
-    %wait E_0x562ef2a5d930;
+    %store/vec4 v0x55633804edb0_0, 0, 2;
+    %wait E_0x556338072730;
+    %wait E_0x556338072730;
     %vpi_call 2 44 "$finish" {0 0 0};
     %end;
     .thread T_0;
-    .scope S_0x562ef2a3c210;
+    .scope S_0x556338051210;
 T_1 ;
     %pushi/vec4 0, 0, 1;
-    %assign/vec4 v0x562ef2a3a1e0_0, 0;
+    %assign/vec4 v0x55633804f1e0_0, 0;
     %end;
     .thread T_1;
-    .scope S_0x562ef2a3c210;
+    .scope S_0x556338051210;
 T_2 ;
     %delay 1, 0;
-    %load/vec4 v0x562ef2a3a1e0_0;
+    %load/vec4 v0x55633804f1e0_0;
     %inv;
-    %assign/vec4 v0x562ef2a3a1e0_0, 0;
+    %assign/vec4 v0x55633804f1e0_0, 0;
     %jmp T_2;
     .thread T_2;
 # The file index is used to find the file name in the following table.

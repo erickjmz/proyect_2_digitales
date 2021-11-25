@@ -1,0 +1,37 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Thu Nov 25 07:57:08 2021
+[*]
+[dumpfile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/MUX/mux.vcd"
+[dumpfile_mtime] "Thu Nov 25 07:56:07 2021"
+[dumpfile_size] 23546
+[savefile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/MUX/mux.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-43.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Banco_pruebas.
+[sst_width] 233
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+Banco_pruebas.mux_Estructural.clk
+@22
+Banco_pruebas.mux_Estructural.data_in0[11:0]
+Banco_pruebas.mux_Estructural.data_in1[11:0]
+Banco_pruebas.mux_Estructural.data_in2[11:0]
+Banco_pruebas.mux_Estructural.data_in3[11:0]
+Banco_pruebas.mux_Estructural.data_out[11:0]
+@28
+Banco_pruebas.mux_Estructural.reset_L
+@22
+Banco_pruebas.mux_cond.data_in0[11:0]
+Banco_pruebas.mux_cond.data_in1[11:0]
+Banco_pruebas.mux_cond.data_in2[11:0]
+Banco_pruebas.mux_cond.data_in3[11:0]
+Banco_pruebas.mux_cond.data_out[11:0]
+@29
+Banco_pruebas.mux_cond.reset_L
+[pattern_trace] 1
+[pattern_trace] 0
