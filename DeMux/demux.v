@@ -11,6 +11,14 @@ module demux
 
 	always @ (*)
 	begin
+		valid_0 = 0;
+		valid_1 = 0;
+		valid_2 = 0;
+		valid_3 = 0;
+		data_out0 = 0;
+		data_out1 = 0;
+		data_out2 = 0;
+		data_out3 = 0;
 		if (reset_L == 0) begin
 			valid_0 = 0;
 			valid_1 = 0;
