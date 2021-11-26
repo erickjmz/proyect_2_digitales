@@ -8,6 +8,7 @@ module mux
 );
 	always @ (*)
 	begin
+		data_out = 0;
 		if (reset_L == 0) begin
 			data_out = 0;
 		end else begin
