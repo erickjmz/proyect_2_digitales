@@ -1,10 +1,10 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Fri Nov 26 21:42:25 2021
+[*] Fri Nov 26 22:50:53 2021
 [*]
 [dumpfile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/Arbitros/arbitro_2/Arbitro_2.vcd"
-[dumpfile_mtime] "Fri Nov 26 21:41:44 2021"
-[dumpfile_size] 3467
+[dumpfile_mtime] "Fri Nov 26 22:50:22 2021"
+[dumpfile_size] 8046
 [savefile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/Arbitros/arbitro_2/Arbitro_2.gtkw"
 [timestart] 0
 [size] 1000 600
@@ -37,7 +37,8 @@ BancoPruebas.arbitro_2_estructural.clk
 BancoPruebas.arbitro_2_estructural.push0
 BancoPruebas.arbitro_2_estructural.push1
 BancoPruebas.arbitro_2_estructural.push2
-@29
 BancoPruebas.arbitro_2_estructural.push3
+@29
+BancoPruebas.arbitro_2_estructural.empty
 [pattern_trace] 1
 [pattern_trace] 0
