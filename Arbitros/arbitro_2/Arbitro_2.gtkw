@@ -1,10 +1,10 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Fri Nov 26 20:27:34 2021
+[*] Fri Nov 26 21:42:25 2021
 [*]
 [dumpfile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/Arbitros/arbitro_2/Arbitro_2.vcd"
-[dumpfile_mtime] "Fri Nov 26 20:27:22 2021"
-[dumpfile_size] 3940
+[dumpfile_mtime] "Fri Nov 26 21:41:44 2021"
+[dumpfile_size] 3467
 [savefile] "/home/erjomuza/Desktop/Proyecto2/proyect_2_digitales/Arbitros/arbitro_2/Arbitro_2.gtkw"
 [timestart] 0
 [size] 1000 600
@@ -12,22 +12,32 @@
 *-4.968040 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] BancoPruebas.
 [sst_width] 233
-[signals_width] 126
+[signals_width] 134
 [sst_expanded] 1
 [sst_vpaned_height] 144
+@200
+-Conductual
 @28
 BancoPruebas.arbitro_2_conductual.clk
 BancoPruebas.arbitro_2_conductual.push0
 BancoPruebas.arbitro_2_conductual.push1
 BancoPruebas.arbitro_2_conductual.push2
 BancoPruebas.arbitro_2_conductual.push3
-@29
 BancoPruebas.arbitro_2_conductual.pop
-@28
+BancoPruebas.arbitro_2_conductual.contador[1:0]
 BancoPruebas.arbitro_2_conductual.almost_full0
 BancoPruebas.arbitro_2_conductual.almost_full1
 BancoPruebas.arbitro_2_conductual.almost_full2
 BancoPruebas.arbitro_2_conductual.almost_full3
 BancoPruebas.arbitro_2_conductual.empty
+@200
+-Estructural
+@28
+BancoPruebas.arbitro_2_estructural.clk
+BancoPruebas.arbitro_2_estructural.push0
+BancoPruebas.arbitro_2_estructural.push1
+BancoPruebas.arbitro_2_estructural.push2
+@29
+BancoPruebas.arbitro_2_estructural.push3
 [pattern_trace] 1
 [pattern_trace] 0

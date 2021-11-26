@@ -33,17 +33,16 @@ initial begin
         @(posedge clk)
 
        @(posedge clk)
-        empty<=1;
+        empty<=0;
 
 
         @(posedge clk)
         almost_full0<=0;
-        almost_full1<=1;
+        almost_full1<=0;
         almost_full2<=0;
         almost_full3<=0;
 
         @(posedge clk)
-        empty<=1;
 
         @(posedge clk)
         almost_full0<=1;
