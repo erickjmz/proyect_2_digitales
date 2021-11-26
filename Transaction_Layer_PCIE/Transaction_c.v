@@ -21,26 +21,26 @@ module Transaction_c(
     output valid, valid_0, valid_1, valid_2, valid_3, valid_4, valid_5, valid_6, valid_7
 );
 
-wire pop_wire0, pop_wire1, pop_wire2, pop_wire3;  
+wire pop_wire0, pop_wire1, pop_wire2, pop_wire3, pop_wire4;  
 wire almost_full0, almost_full1, almost_full2, almost_full3;
-wire empty0, empty1, empty2, empty3, empty4, empty5, empty6, empty7, almost_empty, almost_full, push;
+wire empty0, empty1, empty2, empty3, empty4, empty5, empty6, empty7, empty8, empty9, almost_empty, almost_full, push;
 wire [11:0] inFIFO_out0, inFIFO_out1, inFIFO_out2, inFIFO_out3;
-wire [11:0] outFIFO_in0, outFIFO_in1, outFIFO_in2, outFIFO_in3;
+wire [11:0] outFIFO_in0, outFIFO_in1, outFIFO_in2, outFIFO_in3, outFIFO_in4;
 wire [9:0]	empties;				
 wire [3:0]	state;			
 wire [2:0]	umbral_inferior, umbral_superior;
-wire [11:0] outMUX;
+wire [11:0] outMUX, wireX;
 wire [11:0] outDEMUXA0, outDEMUXA1, outDEMUXA2, outDEMUXA3;
 wire [11:0] outDEMUXB0, outDEMUXB1, outDEMUXB2, outDEMUXB3;
 
 
 
-// FIFOS de entrada //
+// 5 FIFOS de entrada //
 
 FIFO FIFO_in0( 
     .push				(push_in0),
     .pop				(pop_wire0),
-    .data_in			(data_in0),
+    .data_in			(outDEMUXA0),
     .data_out			(outFIFO_in0),
     .empty				(empty0),
     /*AUTOINST*/
@@ -57,7 +57,7 @@ FIFO FIFO_in0(
 FIFO FIFO_in1( 
     .push				(push_in1),
     .pop				(pop_wire1),
-    .data_in			(data_in1),
+    .data_in			(outDEMUXA1),
     .data_out			(outFIFO_in1),
     .empty				(empty1),
     /*AUTOINST*/
@@ -74,7 +74,7 @@ FIFO FIFO_in1(
 FIFO FIFO_in2( 
     .push				(push_in2),
     .pop				(pop_wire2),
-    .data_in			(data_in2),
+    .data_in			(outDEMUXA2),
     .data_out			(outFIFO_in2),
     .empty				(empty2),
     /*AUTOINST*/
@@ -91,7 +91,7 @@ FIFO FIFO_in2(
 FIFO FIFO_in3( 
     .push				(push_in3),
     .pop				(pop_wire3),
-    .data_in			(data_in3),
+    .data_in			(outDEMUXA3),
     .data_out			(outFIFO_in3),
     .empty				(empty3),
     /*AUTOINST*/
@@ -105,15 +105,30 @@ FIFO FIFO_in3(
 	.um_inf				(umbral_inferior[2:0])
 );
 
+FIFO FIFO_in4( 
+    .push				(push_in0),
+    .pop				(pop_wire4),
+    .data_in			(data_in0),
+    .data_out			(outFIFO_in4),
+    .empty				(empty8),
+    /*AUTOINST*/
+	// Outputs
+	.alm_full			(almost_full),
+	.alm_empty			(almost_empty),
+	// Inputs
+	.clk				(clk),
+	.state				(state[3:0]),
+	.um_sup				(umbral_superior[2:0]),
+	.um_inf				(umbral_inferior[2:0])
+);
 
 
 
-
-// FIFOS de salida //
+// 5 FIFOS de salida //
 
 FIFO FIFO_out0( 
     .pop				(pop_in0),
-    .data_in			(inFIFO_out0),
+    .data_in			(outDEMUXB0),
     .data_out			(data_out0),
     .empty				(empty4),
     .alm_full			(almost_full0),
@@ -130,7 +145,7 @@ FIFO FIFO_out0(
 
 FIFO FIFO_out1( 
     .pop				(pop_in1),
-    .data_in			(inFIFO_out1),
+    .data_in			(outDEMUXB1),
     .data_out			(data_out1),
     .empty				(empty5),
     .alm_full			(almost_full1),
@@ -147,7 +162,7 @@ FIFO FIFO_out1(
 
 FIFO FIFO_out2( 
     .pop				(pop_in2),
-    .data_in			(inFIFO_out2),
+    .data_in			(outDEMUXB2),
     .data_out			(data_out2),
     .empty				(empty6),
     .alm_full			(almost_full2),
@@ -164,7 +179,7 @@ FIFO FIFO_out2(
 
 FIFO FIFO_out3( 
     .pop				(pop_in3),
-    .data_in			(inFIFO_out3),
+    .data_in			(outDEMUXB3),
     .data_out			(data_out3),
     .empty				(empty7),
     .alm_full			(almost_full3),
@@ -178,6 +193,26 @@ FIFO FIFO_out3(
 	.um_sup				(umbral_superior[2:0]),
 	.um_inf				(umbral_inferior[2:0])
 );
+
+FIFO FIFO_out4( 
+    .pop				(pop_in0),
+    .data_in			(outMUX),
+    .data_out			(wireX),
+    .empty				(empty7),
+    .alm_full			(almost_full3),
+    /*AUTOINST*/
+	// Outputs
+	.alm_empty			(almost_empty),
+	// Inputs
+	.clk				(clk),
+	.state				(state[3:0]),
+	.push				(push),
+	.um_sup				(umbral_superior[2:0]),
+	.um_inf				(umbral_inferior[2:0])
+);
+
+
+
 
 
 
@@ -204,7 +239,7 @@ mux MUX(
 demux DEMUX1(
     .reset_L		(reset),
     .clk			(clk),
-    .data_in 		(data_in0),
+    .data_in 		(outFIFO_in4),
 	.class 			(class),
 	.data_out0 		(outDEMUXA0),
 	.data_out1 		(outDEMUXA1),
@@ -225,7 +260,7 @@ demux DEMUX1(
 demux DEMUX2(
     .reset_L		(reset),
     .clk			(clk),
-    .data_in 		(data_in1),
+    .data_in 		(wireX),
 	.class 			(class),
 	.data_out0 		(outDEMUXB0),
 	.data_out1 		(outDEMUXB1),
