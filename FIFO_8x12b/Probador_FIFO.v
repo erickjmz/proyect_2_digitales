@@ -6,8 +6,8 @@ module Probador_FIFO(
     output reg push,
     output reg pop,
     output reg [11:0] data_in,
-    output reg [2:0] umbral_superior,            
-    output reg [2:0] umbral_inferior,            
+    output reg [2:0] umbral_superior,
+    output reg [2:0] umbral_inferior,
     input [11:0] data_out_conduct,
     input [11:0] data_out_estruct,
     input almost_full_conduct,
@@ -29,7 +29,7 @@ initial begin
         @(posedge clk)
         @(posedge clk)
         state<=4'b0010;
-        data_in<=10'b0000000001;
+        data_in<=12'b0000000001;
         @(posedge clk)
         push<=1;
         pop<=0;
