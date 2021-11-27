@@ -19,7 +19,7 @@ module Probador(
 initial begin
     $dumpfile("Interconexion.vcd");
     $dumpvars();
-    
+
     req <= 0;
     idle <= 0;
     idx <= 2'b00;
@@ -53,9 +53,9 @@ initial begin
     init <= 0;
     @(posedge clk);
 
-    // 3. Provoque un Almost Full en todos los FIFOs de salida, el árbitro no le permitirá hacerlo 
+    // 3. Provoque un Almost Full en todos los FIFOs de salida, el árbitro no le permitirá hacerlo
     // de forma simultánea. Desde el probador, haga la menor cantidad de POPs. Verifique que las
-    // palabras que salieron son las mismas que entraron y que salieron por la salida correcta 
+    // palabras que salieron son las mismas que entraron y que salieron por la salida correcta
     // en la prioridad correcta.
 
     push_in0 <= 1;
@@ -99,224 +99,7 @@ initial begin
     pop_in0 <= 0;
     push_in0 <=0;
 
-    // 4. Provoque un Almost Full en todos los FIFOs de entrada. Luego usando POPs del probador
-    // deje todos los FIFOs vacíos. Verifique que las palabras que salieron son las mismas que
-    // entraron y que salieron por la salida correcta en la prioridad correcta.
-    // 5. Lea los contadores de palabras. El contador 4 debe tener el mismo valor 
-    // que la suma de los contadores 0, 1, 2 y 3
-
-    /*push_in0 <= 1;
-    push_in1 <= 1;
-    push_in2 <= 1;
-    push_in3 <= 1;
-    data_in0 <= 10'b0000000001;
-    data_in1 <= 10'b0100000001;
-    data_in2 <= 10'b1000000001;
-    data_in3 <= 10'b1100000001;
-    @(posedge clk);
-
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in2 <= 1;
-
-    repeat(7)begin
-    data_in0 <= data_in0 + 1;
-    data_in1 <= data_in1 + 1;
-    data_in2 <= data_in2 + 1;
-    data_in3 <= data_in3 + 1;
-    @(posedge clk);
-    end
     
-    @(posedge clk);
-    data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in2 <= 1;
-    pop_in3 <= 1;
-    repeat(2)begin
-        @(posedge clk);
-    end
-
-    pop_in0 <= 0;
-    pop_in1 <= 0;
-    pop_in2 <= 0;
-    pop_in3 <= 0;
-
-    repeat(10)begin
-        @(posedge clk);
-    end
-
-    pop_in0 <= 1;
-    pop_in3 <= 1;
-
-    repeat(13)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in3 <= 0;
-
-    repeat(13)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in2 <= 1;
-    repeat(13)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in2 <= 1;
-    pop_in3 <= 1;
-    
-
-    repeat(10)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 0;
-    pop_in1 <= 0;
-    pop_in2 <= 0;
-    pop_in3 <= 0;
-
-// 6. Envíe 16 palabras, 4 a cada FIFO de entrada, y cada set de 4 palabras por FIFO de entrada
-// estén con destino a cada FIFO de salida (las 4x4=16 combinaciones posibles). Deje todos los
-// FIFOs vacíos. Verifique que las palabras que salieron son las mismas que entraron y que
-// salieron por la salida correcta en la prioridad correcta.
-// 7. Lea los contadores de palabras y valide un aumento de 4 palabras por contador.
-
-    // PRIMER VALOR
-    data_in0 <= 10'b0000000001;
-    data_in1 <= 10'b0000000010;
-    data_in2 <= 10'b0000000011;
-    data_in3 <= 10'b0000000100;
-    
-    push_in0 <= 1;
-    push_in1 <= 1;
-    push_in2 <= 1;
-    push_in3 <= 1;
-
-    //         //CERO
-    @(posedge clk);
-
-    data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-
-
-    // SEGUNDO VALOR
-
-    data_in0 <= 10'b0100000001;
-    data_in1 <= 10'b0100000010;
-    data_in2 <= 10'b0100000011;
-    data_in3 <= 10'b0100000100;
-
-            // CERO
-    @(posedge clk);
-
-    data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-
-
-    // TERCER VALOR
-    push_in0 <= 1;
-    data_in0 <= 10'b1000000001;
-    data_in1 <= 10'b1000000010;
-    data_in2 <= 10'b1000000011;
-    data_in3 <= 10'b1000000100;
-    @(posedge clk);
-data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-
-                // CERO
-    @(posedge clk);
-
-    // CUARTO VALOR
-    @(posedge clk);
-    data_in0 <= 10'b1100000001;
-    data_in1 <= 10'b1100000010;
-    data_in2 <= 10'b1100000011;
-    data_in3 <= 10'b1100000100;
-    @(posedge clk);
-    data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-
-
-                // CERO
-    @(posedge clk);
-
-            //CERO
-    @(posedge clk);
-    data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-    
-    repeat(13)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    repeat(5)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    repeat(5)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in2 <= 1;
-    repeat(5)begin
-        @(posedge clk);
-    end
-    pop_in0 <= 1;
-    pop_in1 <= 1;
-    pop_in2 <= 1;
-    pop_in3 <= 1;
-
-    repeat(11)begin
-        @(posedge clk);
-    end
-
-    idx <= 2'b00;
-    req <= 1;
-    @(posedge clk);
-    idx <= 2'b01;
-    req <= 1;
-    @(posedge clk);
-    idx <= 2'b10;
-    req <= 1;
-    @(posedge clk);
-    idx <= 2'b11;
-    req <= 1; */
     @(posedge clk);
     @(posedge clk);
     @(posedge clk);

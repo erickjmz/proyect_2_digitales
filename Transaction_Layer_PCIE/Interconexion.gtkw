@@ -1,0 +1,63 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Sat Nov 27 05:49:38 2021
+[*]
+[dumpfile] "/home/erjomuza/Desktop/Proyecto2/kk/proyect_2_digitales/Transaction_Layer_PCIE/Interconexion.vcd"
+[dumpfile_mtime] "Sat Nov 27 05:44:36 2021"
+[dumpfile_size] 1446492
+[savefile] "/home/erjomuza/Desktop/Proyecto2/kk/proyect_2_digitales/Transaction_Layer_PCIE/Interconexion.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-17.450653 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] BancoPruebas.
+[treeopen] BancoPruebas.TL_conductual.FIFO_in4.
+[treeopen] BancoPruebas.TL_estructural.
+[treeopen] BancoPruebas.TL_estructural.FIFO_e_in4.
+[treeopen] BancoPruebas.TL_estructural.MUX.
+[sst_width] 233
+[signals_width] 150
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@200
+-FIFO_in_0
+@22
+BancoPruebas.TL_conductual.FIFO_in0.data_in[11:0]
+BancoPruebas.TL_conductual.FIFO_in0.data_out[11:0]
+@200
+-DeMux_in
+@22
+BancoPruebas.TL_conductual.DEMUX1.data_in[11:0]
+BancoPruebas.TL_conductual.DEMUX1.data_out0[11:0]
+@200
+-FIFO_INICIAL
+@22
+BancoPruebas.TL_conductual.FIFO_in4.data_in[11:0]
+BancoPruebas.TL_conductual.FIFO_in4.data_out[11:0]
+@28
+BancoPruebas.TL_conductual.FIFO_in4.clk
+BancoPruebas.TL_conductual.FIFO_in4.pop
+BancoPruebas.TL_conductual.FIFO_in4.push
+@200
+-Estructural
+-FIFO_in_0
+@22
+BancoPruebas.TL_estructural.FIFO_e_in0.data_in[11:0]
+BancoPruebas.TL_estructural.FIFO_e_in0.data_out[11:0]
+@200
+-DeMux_in
+@22
+BancoPruebas.TL_estructural.DEMUX1.data_in[11:0]
+BancoPruebas.TL_estructural.DEMUX1.data_out0[11:0]
+@201
+-Mux
+@22
+BancoPruebas.TL_estructural.MUX.data_in0[11:0]
+BancoPruebas.TL_estructural.MUX.data_out[11:0]
+@200
+-FIFO_INICIAL
+@22
+BancoPruebas.TL_estructural.FIFO_e_in4.data_in[11:0]
+BancoPruebas.TL_estructural.FIFO_e_in4.data_out[11:0]
+[pattern_trace] 1
+[pattern_trace] 0
