@@ -29,14 +29,6 @@ initial begin
     Umbral_bajo <= 3'b000;
     Umbral_alto <= 3'b000;
     push_in0 <= 0;
-    push_in1 <= 0;
-    push_in2 <= 0;
-    push_in3 <= 0;
-    pop_in0 <= 0;
-    pop_in1 <= 0;
-    pop_in2 <= 0;
-    pop_in3 <= 0;
-    pop_in4 <= 0;
     @(posedge clk);
 
     // 1. Saque el bloque de RESET, manteniendo el estado de INIT (señal init)
@@ -67,129 +59,42 @@ initial begin
     // en la prioridad correcta.
 
     push_in0 <= 1;
-    push_in1 <= 1;
-    push_in2 <= 1;
-    push_in3 <= 1;
+    @(posedge clk);
+    data_in0 <= 12'b000000000001;
+    @(posedge clk);
+    pop
+    data_in0 <= 12'b000000000001;
+    @(posedge clk);
+    data_in0 <= 12'b000000000001;
+    @(posedge clk);
     data_in0 <= 12'b000000000001;
 
     @(posedge clk);
-    push_in0 <= 0;
-    push_in1 <= 1;
-    push_in2 <= 0;
-    push_in3 <= 1;
+    data_in0 <= 12'b000100000001;
+    @(posedge clk);
+    data_in0 <= 12'b000100000001;
+    @(posedge clk);
+    data_in0 <= 12'b000100000001;
+    @(posedge clk);
+    data_in0 <= 12'b000100000001;
 
     @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    data_in0 <= data_in0 + 1;
-    data_in1 <= data_in1 + 1;
-    data_in2 <= data_in2 + 1;
-    data_in3 <= data_in3 + 1;
+    data_in0 <= 12'b001000000001;
+    @(posedge clk);
+    data_in0 <= 12'b001000000001;
+    @(posedge clk);
+    data_in0 <= 12'b001000000001;
+    @(posedge clk);
+    data_in0 <= 12'b001000000001;
 
     @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
+    data_in0 <= 12'b001100000001;
     @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    data_in0 <= data_in0 + 1;
-    data_in1 <= data_in1 + 1;
-    data_in2 <= data_in2 + 1;
-    data_in3 <= data_in3 + 1;
-
+    data_in0 <= 12'b001100000001;
     @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
+    data_in0 <= 12'b001100000001;
     @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    data_in0 <= data_in0 + 1;
-    data_in1 <= data_in1 + 1;
-    data_in2 <= data_in2 + 1;
-    data_in3 <= data_in3 + 1;
-
-    @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    data_in0 <= data_in0 + 1;
-    data_in1 <= data_in1 + 1;
-    data_in2 <= data_in2 + 1;
-    data_in3 <= data_in3 + 1;
-
-    @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    @(posedge clk);
-    push_in0 <= push_in0 + 1;
-    push_in1 <= push_in1 + 1;
-    push_in2 <= push_in2 + 1;
-    push_in3 <= push_in3 + 1;
-
-    data_in0 <= data_in0 + 1;
-    data_in1 <= data_in1 + 1;
-    data_in2 <= data_in2 + 1;
-    data_in3 <= data_in3 + 1;
-
-    @(posedge clk);
-    data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
-    @(posedge clk);
-    @(posedge clk); 
-    @(posedge clk);
-
-    pop_in0 <=1;
-    
-    @(posedge clk);
-    pop_in0 <=0;
-    pop_in1 <=1;
-    @(posedge clk);
-    pop_in1 <=0;
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    pop_in2 <=1;
-    @(posedge clk);
-    pop_in2 <=0;
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
-    @(posedge clk);
+    data_in0 <= 12'b001100000001;
 
     // 4. Provoque un Almost Full en todos los FIFOs de entrada. Luego usando POPs del probador
     // deje todos los FIFOs vacíos. Verifique que las palabras que salieron son las mismas que
