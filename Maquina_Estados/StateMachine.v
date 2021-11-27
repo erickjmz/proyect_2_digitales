@@ -36,11 +36,9 @@ always@(posedge clk)begin
 end
 
 always@(*)begin
-
     if(reset)begin
         state = RESET;
         ProximoEstado = 0;
-        reset_L = 0;
     end
     else begin
     state = Estado;
