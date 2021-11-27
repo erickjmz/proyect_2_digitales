@@ -15,11 +15,7 @@ module arbitro_2(
 reg [1:0] contador;
 //Lógica de prioridades
 
-always@(*)begin
-    push0=0;
-    push1=0;
-    push2=0;
-    push3=0;
+always@(posedge clk)begin
     if(state == 4'b0001 || empty == 1)begin
         push0=0;
         push1=0;
