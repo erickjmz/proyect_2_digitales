@@ -1,6 +1,6 @@
 `include "FIFO.v"
 `include "contadores.v"
-`include "arbitro.v"
+`include "arbitro_1.v"
 `include "arbitro_2.v"
 `include "mux.v"
 `include "demux.v"
@@ -35,7 +35,7 @@ wire pushA0, pushA1, pushA2, pushA3;
 wire [11:0] outMUX, wireX;
 wire [11:0] outDEMUXA0, outDEMUXA1, outDEMUXA2, outDEMUXA3;
 wire [11:0] outDEMUXB0, outDEMUXB1, outDEMUXB2, outDEMUXB3;
-
+wire pushB0, pushB1, pushB2, pushB3;
 
 
 // 5 FIFOS de entrada //
@@ -141,7 +141,7 @@ FIFO FIFO_out0(
 	// Inputs
 	.clk				(clk),
 	.state				(state[3:0]),
-	.push				(push),
+	.push				(pushB0),
 	.um_sup				(umbral_superior[2:0]),
 	.um_inf				(umbral_inferior[2:0])
 );
@@ -158,7 +158,7 @@ FIFO FIFO_out1(
 	// Inputs
 	.clk				(clk),
 	.state				(state[3:0]),
-	.push				(push),
+	.push				(pushB1),
 	.um_sup				(umbral_superior[2:0]),
 	.um_inf				(umbral_inferior[2:0])
 );
@@ -175,7 +175,7 @@ FIFO FIFO_out2(
 	// Inputs
 	.clk				(clk),
 	.state				(state[3:0]),
-	.push				(push),
+	.push				(pushB2),
 	.um_sup				(umbral_superior[2:0]),
 	.um_inf				(umbral_inferior[2:0])
 );
@@ -192,7 +192,7 @@ FIFO FIFO_out3(
 	// Inputs
 	.clk				(clk),
 	.state				(state[3:0]),
-	.push				(push),
+	.push				(pushB3),
 	.um_sup				(umbral_superior[2:0]),
 	.um_inf				(umbral_inferior[2:0])
 );
@@ -297,33 +297,34 @@ contadores Contadores(
 
 
 
-// Arbitro //
+// Arbitro 1//
 
-arbitro arbitro(
-    .empty0_orange			(empty0),
-    .empty1_orange			(empty1),
-    .empty2_orange			(empty2),
-    .empty3_orange			(empty3),
-    .empty0_purple			(empty4),
-    .empty1_purple			(empty5),
-    .empty2_purple			(empty6),
-    .empty3_purple			(empty7),
-    .pop0					(pop_wire0),
-    .pop1					(pop_wire1),
-    .pop2					(pop_wire2),
-    .pop3					(pop_wire3),
-    /*AUTOINST*/
-	// Outputs
-	.push					(push),
-	.empties				(empties[9:0]),
-	// Inputs
-	.clk					(clk),
-	.almost_full0			(almost_full0),
-	.almost_full1			(almost_full1),
-	.almost_full2			(almost_full2),
-	.almost_full3			(almost_full3),
-	.state					(state[3:0])
+arbitro_1 arbitro_1(
+	.clk				(clk),
+	.almost_full0		(almost_fullB0),
+	.almost_full1		(almost_fullB1),
+	.almost_full2		(almost_fullB2),
+	.almost_full3		(almost_fullB3),
+	.empty0				(empty0),
+	.empty1				(empty1),
+	.empty2				(empty2),
+	.empty3				(empty3),
+	.dest				(wireX[9:8]),
+	.valid_0			(valid_4),
+	.valid_1			(valid_5),
+	.valid_2			(valid_6),
+	.valid_3			(valid_7),
+	.state				(state),
+	.pop0				(pop_wire0),
+	.pop1				(pop_wire1),
+	.pop2				(pop_wire2),
+	.pop3				(pop_wire3),
+	.push0				(pushB0),
+	.push1				(pushB1),
+	.push2				(pushB2),
+	.push3				(pushB3)
 );
+
 
 
 

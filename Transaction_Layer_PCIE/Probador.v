@@ -24,9 +24,6 @@ initial begin
     idle <= 0;
     idx <= 2'b00;
     data_in0 <= 10'b0000000000;
-    data_in1 <= 10'b0000000000;
-    data_in2 <= 10'b0000000000;
-    data_in3 <= 10'b0000000000;
     reset <= 1;
     init <= 0;
     Umbral_bajo <= 3'b000;
@@ -73,10 +70,8 @@ initial begin
     push_in1 <= 1;
     push_in2 <= 1;
     push_in3 <= 1;
-    data_in0 <= 10'b0000000001;
-    data_in1 <= 10'b0100000010;
-    data_in2 <= 10'b1000000100;
-    data_in3 <= 10'b1100001000;
+    data_in0 <= 12'b000000000001;
+
     @(posedge clk);
     push_in0 <= 0;
     push_in1 <= 1;
