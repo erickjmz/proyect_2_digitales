@@ -1,6 +1,7 @@
 `include "FIFO.v"
 `include "contadores.v"
 `include "arbitro.v"
+`include "arbitro_2.v"
 `include "mux.v"
 `include "demux.v"
 `include "StateMachine.v"
@@ -20,15 +21,17 @@ module Transaction_c(
     output [4:0] contador,
     output valid, valid_0, valid_1, valid_2, valid_3, valid_4, valid_5, valid_6, valid_7
 );
-
 wire pop_wire0, pop_wire1, pop_wire2, pop_wire3, pop_wire4;
-wire almost_full0, almost_full1, almost_full2, almost_full3;
 wire empty0, empty1, empty2, empty3, empty4, empty5, empty6, empty7, empty8, empty9, almost_empty, almost_full, push;
-wire [11:0] inFIFO_out0, inFIFO_out1, inFIFO_out2, inFIFO_out3;
+//wire [11:0] inFIFO_out0, inFIFO_out1, inFIFO_out2, inFIFO_out3;
 wire [11:0] outFIFO_in0, outFIFO_in1, outFIFO_in2, outFIFO_in3, outFIFO_in4;
 wire [9:0]	empties;
 wire [3:0]	state;
 wire [2:0]	umbral_inferior, umbral_superior;
+wire almost_fullA0, almost_fullA1, almost_fullA2, almost_fullA3;
+wire almost_fullB0, almost_fullB1, almost_fullB2, almost_fullB3;
+wire popArbitro2;
+wire pushA0, pushA1, pushA2, pushA3;
 wire [11:0] outMUX, wireX;
 wire [11:0] outDEMUXA0, outDEMUXA1, outDEMUXA2, outDEMUXA3;
 wire [11:0] outDEMUXB0, outDEMUXB1, outDEMUXB2, outDEMUXB3;
@@ -38,14 +41,14 @@ wire [11:0] outDEMUXB0, outDEMUXB1, outDEMUXB2, outDEMUXB3;
 // 5 FIFOS de entrada //
 
 FIFO FIFO_in0(
-    .push				(push_in0),
+    .push				(pushA0),
     .pop				(pop_wire0),
     .data_in			(outDEMUXA0),
     .data_out			(outFIFO_in0),
     .empty				(empty0),
     /*AUTOINST*/
 	// Outputs
-	.alm_full			(almost_full),
+	.alm_full			(almost_fullA0),
 	.alm_empty			(almost_empty),
 	// Inputs
 	.clk				(clk),
@@ -55,14 +58,14 @@ FIFO FIFO_in0(
 );
 
 FIFO FIFO_in1(
-    .push				(push_in1),
+    .push				(pushA1),
     .pop				(pop_wire1),
     .data_in			(outDEMUXA1),
     .data_out			(outFIFO_in1),
     .empty				(empty1),
     /*AUTOINST*/
 	// Outputs
-	.alm_full			(almost_full),
+	.alm_full			(almost_fullA1),
 	.alm_empty			(almost_empty),
 	// Inputs
 	.clk				(clk),
@@ -72,14 +75,14 @@ FIFO FIFO_in1(
 );
 
 FIFO FIFO_in2(
-    .push				(push_in2),
+    .push				(pushA2),
     .pop				(pop_wire2),
     .data_in			(outDEMUXA2),
     .data_out			(outFIFO_in2),
     .empty				(empty2),
     /*AUTOINST*/
 	// Outputs
-	.alm_full			(almost_full),
+	.alm_full			(almost_fullA2),
 	.alm_empty			(almost_empty),
 	// Inputs
 	.clk				(clk),
@@ -89,14 +92,14 @@ FIFO FIFO_in2(
 );
 
 FIFO FIFO_in3(
-    .push				(push_in3),
+    .push				(pushA3),
     .pop				(pop_wire3),
     .data_in			(outDEMUXA3),
     .data_out			(outFIFO_in3),
     .empty				(empty3),
     /*AUTOINST*/
 	// Outputs
-	.alm_full			(almost_full),
+	.alm_full			(almost_fullA3),
 	.alm_empty			(almost_empty),
 	// Inputs
 	.clk				(clk),
@@ -131,7 +134,7 @@ FIFO FIFO_out0(
     .data_in			(outDEMUXB0),
     .data_out			(data_out0),
     .empty				(empty4),
-    .alm_full			(almost_full0),
+    .alm_full			(almost_fullB0),
     /*AUTOINST*/
 	// Outputs
 	.alm_empty			(almost_empty),
@@ -148,7 +151,7 @@ FIFO FIFO_out1(
     .data_in			(outDEMUXB1),
     .data_out			(data_out1),
     .empty				(empty5),
-    .alm_full			(almost_full1),
+    .alm_full			(almost_fullB1),
     /*AUTOINST*/
 	// Outputs
 	.alm_empty			(almost_empty),
@@ -165,7 +168,7 @@ FIFO FIFO_out2(
     .data_in			(outDEMUXB2),
     .data_out			(data_out2),
     .empty				(empty6),
-    .alm_full			(almost_full2),
+    .alm_full			(almost_fullB2),
     /*AUTOINST*/
 	// Outputs
 	.alm_empty			(almost_empty),
@@ -182,7 +185,7 @@ FIFO FIFO_out3(
     .data_in			(outDEMUXB3),
     .data_out			(data_out3),
     .empty				(empty7),
-    .alm_full			(almost_full3),
+    .alm_full			(almost_fullB3),
     /*AUTOINST*/
 	// Outputs
 	.alm_empty			(almost_empty),
@@ -195,7 +198,7 @@ FIFO FIFO_out3(
 );
 
 FIFO FIFO_out4(
-    .pop				(pop_in0),
+    .pop				(popArbitro2),
     .data_in			(outMUX),
     .data_out			(wireX),
     .empty				(empty7),
@@ -210,9 +213,6 @@ FIFO FIFO_out4(
 	.um_sup				(umbral_superior[2:0]),
 	.um_inf				(umbral_inferior[2:0])
 );
-
-
-
 
 
 
@@ -250,8 +250,6 @@ demux DEMUX1(
 	.valid_2 		(valid_2),
 	.valid_3 		(valid_3)
 );
-
-
 
 
 
@@ -325,6 +323,28 @@ arbitro arbitro(
 	.almost_full2			(almost_full2),
 	.almost_full3			(almost_full3),
 	.state					(state[3:0])
+);
+
+
+
+
+// Arbitro 2//
+
+arbitro_2 arbitro_2(
+	//Input
+	.clk 					(clk),
+	.almost_full0			(almost_fullA0),
+	.almost_full1			(almost_fullA1),
+	.almost_full2 			(almost_fullA2),
+	.almost_full3			(almost_fullA3),
+	.empty 					(empty8),
+	.state					(state),
+	//Outputs
+	.pop					(popArbitro2),
+	.push0					(pushA0),
+	.push1					(pushA1),
+	.push2					(pushA2),
+	.push3					(pushA3)
 );
 
 
