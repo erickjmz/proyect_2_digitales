@@ -36,6 +36,7 @@ wire [11:0] outMUX, wireX;
 wire [11:0] outDEMUXA0, outDEMUXA1, outDEMUXA2, outDEMUXA3;
 wire [11:0] outDEMUXB0, outDEMUXB1, outDEMUXB2, outDEMUXB3;
 wire pushB0, pushB1, pushB2, pushB3;
+wire reset_L;
 
 
 // 5 FIFOS de entrada //
@@ -221,7 +222,7 @@ FIFO FIFO_out4(
 // MUX //
 
 mux MUX(
-    .reset_L			(reset),
+    .reset_L			(reset_L),
     .clk				(clk),
     .data_in0 			(outFIFO_in0),
 	.data_in1 			(outFIFO_in1),
@@ -237,7 +238,7 @@ mux MUX(
 // DEMUX 1 //
 
 demux DEMUX1(
-    .reset_L		(reset),
+    .reset_L		(reset_L),
     .clk			(clk),
     .data_in 		(outFIFO_in4),
 	.class 			(outFIFO_in4[11:10]),
@@ -256,7 +257,7 @@ demux DEMUX1(
 // DEMUX 2 //
 
 demux DEMUX2(
-    .reset_L		(reset),
+    .reset_L		(reset_L),
     .clk			(clk),
     .data_in 		(wireX),
 	.class 			(wireX[9:8]),
@@ -289,7 +290,7 @@ contadores Contadores(
 	// Inputs
 	.idle				(idle),
 	.clk				(clk),
-	.reset_L			(reset),
+	.reset_L			(reset_L),
 	.idx				(idx[2:0])
 );
 
@@ -341,7 +342,7 @@ arbitro_2 arbitro_2(
 	.empty 					(empty8),
 	.state					(state),
 	//Outputs
-	.pop					(popArbitro2),
+	.pop					(pop_wire4),
 	.push0					(pushA0),
 	.push1					(pushA1),
 	.push2					(pushA2),
@@ -366,7 +367,8 @@ StateMachine FSM (
 	.Low_Threshold			(Umbral_bajo[2:0]),
 	.reset					(reset),
 	.init					(init),
-	.empties				(empties[9:0])
+	.empties				(empties[9:0]),
+	.reset_L				(reset_L)
 );
 
 endmodule

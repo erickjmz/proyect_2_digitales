@@ -62,7 +62,7 @@ initial begin
     @(posedge clk);
     data_in0 <= 12'b000000000001;
     @(posedge clk);
-    pop
+    pop_in0 <= 1;
     data_in0 <= 12'b000000000001;
     @(posedge clk);
     data_in0 <= 12'b000000000001;
@@ -95,6 +95,9 @@ initial begin
     data_in0 <= 12'b001100000001;
     @(posedge clk);
     data_in0 <= 12'b001100000001;
+
+    pop_in0 <= 0;
+    push_in0 <=0;
 
     // 4. Provoque un Almost Full en todos los FIFOs de entrada. Luego usando POPs del probador
     // deje todos los FIFOs vacíos. Verifique que las palabras que salieron son las mismas que
@@ -102,7 +105,7 @@ initial begin
     // 5. Lea los contadores de palabras. El contador 4 debe tener el mismo valor 
     // que la suma de los contadores 0, 1, 2 y 3
 
-    push_in0 <= 1;
+    /*push_in0 <= 1;
     push_in1 <= 1;
     push_in2 <= 1;
     push_in3 <= 1;
@@ -313,7 +316,7 @@ data_in0 <= 10'b0000000000;
     req <= 1;
     @(posedge clk);
     idx <= 2'b11;
-    req <= 1;
+    req <= 1; */
     @(posedge clk);
     @(posedge clk);
     @(posedge clk);
